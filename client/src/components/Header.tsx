@@ -76,6 +76,7 @@ export default function Header() {
             <NavLink label="Attività" id="attivita" onClick={() => scrollToSection('attivita')} />
             <NavLink label="Orari" id="orari" onClick={() => scrollToSection('orari')} />
             <NavLink label="Galleria" id="galleria" onClick={() => scrollToSection('galleria')} />
+            <NavLink label="Eventi Passati" id="eventi-passati" onClick={() => scrollToSection('eventi-passati')} />
             <NavLink label="Contatti" id="contatti" onClick={() => scrollToSection('contatti')} />
           </nav>
         </div>
@@ -95,6 +96,7 @@ export default function Header() {
             <NavLink mobile={true} label="Attività" id="attivita" onClick={() => scrollToSection('attivita')} />
             <NavLink mobile={true} label="Orari" id="orari" onClick={() => scrollToSection('orari')} />
             <NavLink mobile={true} label="Galleria" id="galleria" onClick={() => scrollToSection('galleria')} />
+            <NavLink mobile={true} label="Eventi Passati" id="eventi-passati" onClick={() => scrollToSection('eventi-passati')} />
             <NavLink mobile={true} label="Contatti" id="contatti" onClick={() => scrollToSection('contatti')} />
           </div>
         </motion.div>
