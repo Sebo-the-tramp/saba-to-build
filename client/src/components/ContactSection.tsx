@@ -1,21 +1,4 @@
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Il nome deve contenere almeno 2 caratteri" }),
-  email: z.string().email({ message: "Inserisci un indirizzo email valido" }),
-  subject: z.string().min(5, { message: "L'oggetto deve contenere almeno 5 caratteri" }),
-  message: z.string().min(10, { message: "Il messaggio deve contenere almeno 10 caratteri" })
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 interface ContactInfoItemProps {
   icon: string;
@@ -68,205 +51,82 @@ function SocialLink({ icon, href, delay }: SocialLinkProps) {
 }
 
 export default function ContactSection() {
-  const { toast } = useToast();
-  
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    },
-  });
-
-  function onSubmit(data: ContactFormValues) {
-    // Send form data to API endpoint
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(result => {
-      if (result.success) {
-        toast({
-          title: "Messaggio inviato!",
-          description: "Grazie per averci contattato. Ti risponderemo al più presto.",
-        });
-        form.reset();
-      } else {
-        toast({
-          title: "Errore",
-          description: result.message || "Si è verificato un errore. Riprova più tardi.",
-          variant: "destructive",
-        });
-      }
-    })
-    .catch(error => {
-      toast({
-        title: "Errore",
-        description: "Si è verificato un errore di connessione. Riprova più tardi.",
-        variant: "destructive",
-      });
-    });
-  }
-
   return (
     <section id="contatti" className="py-16 md:py-24 bg-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Contattaci</h2>
+            <p className="text-lg text-neutral mb-12 text-center">
+              Hai domande sul nostro "Saba-to-build"? Vuoi partecipare o hai suggerimenti da condividere? Contattaci!
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white rounded-lg shadow p-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Contattaci</h2>
-              <p className="text-lg text-neutral mb-8">
-                Hai domande sul nostro "Saba-to-build"? Vuoi partecipare o hai suggerimenti da condividere? Contattaci!
-              </p>
-              
-              <div className="space-y-6">
-                <ContactInfoItem 
-                  icon="bx-map" 
-                  title="Indirizzo" 
-                  content="Via Roma 123, 00100 Roma"
-                  delay={0.1}
-                />
-                
-                <ContactInfoItem 
-                  icon="bx-envelope" 
-                  title="Email" 
-                  content="info@sabatobuild.it"
-                  delay={0.2}
-                />
-                
-                <ContactInfoItem 
-                  icon="bx-phone" 
-                  title="Telefono" 
-                  content="+39 01 2345 6789"
-                  delay={0.3}
-                />
-                
-                <motion.div 
-                  className="pt-6"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                >
-                  <h4 className="text-lg font-heading font-semibold mb-4">Seguici</h4>
-                  <div className="flex space-x-4">
-                    <SocialLink icon="bxl-instagram" href="#" delay={0.5} />
-                    <SocialLink icon="bxl-facebook" href="#" delay={0.6} />
-                    <SocialLink icon="bxl-whatsapp" href="#" delay={0.7} />
-                    <SocialLink icon="bxl-telegram" href="#" delay={0.8} />
-                  </div>
-                </motion.div>
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+                <i className="bx bx-map text-2xl"></i>
               </div>
+              <h3 className="text-xl font-heading font-semibold mb-3">Indirizzo</h3>
+              <p className="text-neutral">Via Roma 123,<br />00100 Roma</p>
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white rounded-lg shadow p-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h3 className="text-xl font-heading font-semibold mb-6">Mandaci un messaggio</h3>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-neutral">Nome</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Il tuo nome" 
-                              {...field} 
-                              className="border-gray-200 focus:border-primary"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-neutral">Email</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="La tua email" 
-                              type="email" 
-                              {...field} 
-                              className="border-gray-200 focus:border-primary"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-neutral">Oggetto</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Oggetto del messaggio" 
-                              {...field} 
-                              className="border-gray-200 focus:border-primary"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-neutral">Messaggio</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Il tuo messaggio" 
-                              rows={4} 
-                              {...field} 
-                              className="border-gray-200 focus:border-primary"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <div className="pt-2">
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-primary text-white hover:bg-primary/90 font-heading font-semibold"
-                      >
-                        Invia Messaggio
-                      </Button>
-                    </div>
-                  </form>
-                </Form>
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+                <i className="bx bx-envelope text-2xl"></i>
               </div>
+              <h3 className="text-xl font-heading font-semibold mb-3">Email</h3>
+              <p className="text-neutral">info@sabatobuild.it</p>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white rounded-lg shadow p-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+                <i className="bx bx-phone text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-heading font-semibold mb-3">Telefono</h3>
+              <p className="text-neutral">+39 01 2345 6789</p>
             </motion.div>
           </div>
+          
+          <motion.div 
+            className="mt-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <h3 className="text-xl font-heading font-semibold mb-4">Seguici sui Social</h3>
+            <div className="flex justify-center space-x-4">
+              <SocialLink icon="bxl-instagram" href="#" delay={0.1} />
+              <SocialLink icon="bxl-facebook" href="#" delay={0.2} />
+              <SocialLink icon="bxl-whatsapp" href="#" delay={0.3} />
+              <SocialLink icon="bxl-telegram" href="#" delay={0.4} />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
