@@ -81,14 +81,37 @@ export default function ContactSection() {
   });
 
   function onSubmit(data: ContactFormValues) {
-    console.log(data);
-    
-    toast({
-      title: "Messaggio inviato!",
-      description: "Grazie per averci contattato. Ti risponderemo al più presto.",
+    // Send form data to API endpoint
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.success) {
+        toast({
+          title: "Messaggio inviato!",
+          description: "Grazie per averci contattato. Ti risponderemo al più presto.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Errore",
+          description: result.message || "Si è verificato un errore. Riprova più tardi.",
+          variant: "destructive",
+        });
+      }
+    })
+    .catch(error => {
+      toast({
+        title: "Errore",
+        description: "Si è verificato un errore di connessione. Riprova più tardi.",
+        variant: "destructive",
+      });
     });
-    
-    form.reset();
   }
 
   return (
