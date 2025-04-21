@@ -76,11 +76,11 @@ export default function ContactSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
                 <i className="bx bx-map text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold mb-3">Indirizzo</h3>
-              <p className="text-neutral">Via Roma 123,<br />00100 Roma</p>
+              <p className="text-neutral">Via Bolzano 20<br />38030 Molina di Fiemme</p>
             </motion.div>
             
             <motion.div
@@ -90,11 +90,11 @@ export default function ContactSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
                 <i className="bx bx-envelope text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold mb-3">Email</h3>
-              <p className="text-neutral">info@sabatobuild.it</p>
+              <p className="text-neutral">sebastian.cavada.dev@gmail.com</p>
             </motion.div>
             
             <motion.div
@@ -104,11 +104,11 @@ export default function ContactSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
                 <i className="bx bx-phone text-2xl"></i>
               </div>
               <h3 className="text-xl font-heading font-semibold mb-3">Telefono</h3>
-              <p className="text-neutral">+39 01 2345 6789</p>
+              <p className="text-neutral">+39 3703115683</p>
             </motion.div>
           </div>
           
@@ -121,10 +121,10 @@ export default function ContactSection() {
           >
             <h3 className="text-xl font-heading font-semibold mb-4">Seguici sui Social</h3>
             <div className="flex justify-center space-x-4">
-              <SocialLink icon="bxl-instagram" href="#" delay={0.1} />
-              <SocialLink icon="bxl-facebook" href="#" delay={0.2} />
-              <SocialLink icon="bxl-whatsapp" href="#" delay={0.3} />
-              <SocialLink icon="bxl-telegram" href="#" delay={0.4} />
+              <SocialLink icon="bxl-instagram text-white" href="#" delay={0.1} />
+              <SocialLink icon="bxl-facebook text-white" href="#" delay={0.2} />
+              <SocialLink icon="bxl-whatsapp text-white" href="#" delay={0.3} />
+              <SocialLink icon="bxl-telegram text-white" href="#" delay={0.4} />
             </div>
           </motion.div>
         </div>

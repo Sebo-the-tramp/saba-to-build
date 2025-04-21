@@ -13,7 +13,7 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-2xl font-heading font-bold text-white mb-2">Saba-to-build</h2>
+              <h2 className="text-2xl font-heading font-bold text-primary mb-2">Saba-to-build</h2>
               <p className="text-gray-400">Costruiamo insieme ogni sabato</p>
             </motion.div>
             

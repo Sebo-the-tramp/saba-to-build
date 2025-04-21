@@ -19,9 +19,9 @@ function GalleryImage({ src, alt, caption, delay }: GalleryImageProps) {
       <img 
         src={src} 
         alt={alt} 
-        className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105" 
+        className="w-full h-full transition-all duration-300 group-hover:scale-105 z-index-10" 
       />
-      <div className="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+      <div className="absolute inset-0 bg-opacity-20 group-hover:bg-opacity-00 transition-all duration-300 flex items-center justify-center">
         <span className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 font-heading font-semibold px-4 text-center">
           {caption}
         </span>
@@ -33,35 +33,25 @@ function GalleryImage({ src, alt, caption, delay }: GalleryImageProps) {
 export default function GallerySection() {
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      src: "./assets/IMG_1643.jpeg",
       alt: "Spazio di lavoro condiviso",
       caption: "Spazio di lavoro principale"
     },
     {
-      src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      src: "/assets/IMG_1644.jpeg",
       alt: "Area relax",
       caption: "Area relax"
     },
     {
-      src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      src: "/assets/IMG_1645.jpeg",
       alt: "Sessione di condivisione",
       caption: "Sessione di condivisione"
     },
     {
-      src: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      src: "/assets/IMG_1646.jpeg",
       alt: "Collaborazione su progetti",
       caption: "Collaborazione su progetti"
     },
-    {
-      src: "https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Pranzo condiviso",
-      caption: "Momento del pranzo"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      alt: "Attività fisica",
-      caption: "Pausa attiva"
-    }
   ];
 
   return (

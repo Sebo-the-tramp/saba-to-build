@@ -49,26 +49,26 @@ function Event({ date, title, description, tags, imageUrl, index }: EventProps) 
 export default function PastEventsSection() {
   const pastEvents = [
     {
-      date: "20 Marzo 2025",
-      title: "Workshop di Programmazione",
-      description: "Una giornata dedicata all'apprendimento della programmazione con focus su progetti pratici.",
-      tags: ["coding", "workshop", "principianti"],
-      imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      date: "7 Giugno 2025",
+      title: "Kick off e Presentazione progetto",
+      description: "La prima giornata in cui presentiamo il progetto e diamo il via ad un estate di eventi.",     
+      tags: ["kick-off", "building"],
+      imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
-    {
-      date: "13 Marzo 2025",
-      title: "Design Thinking",
-      description: "Sessione collaborativa per applicare i principi del design thinking a problemi reali.",
-      tags: ["design", "innovazione", "brainstorming"],
-      imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      date: "6 Marzo 2025",
-      title: "Yoga e Produttività",
-      description: "Un mix perfetto tra attività fisica e mentale per migliorare il benessere e la produttività.",
-      tags: ["benessere", "yoga", "produttività"],
-      imageUrl: "https://images.unsplash.com/photo-1599447539673-4c37d6df1de0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    }
+    // {
+    //   date: "13 Marzo 2025",
+    //   title: "Design Thinking",
+    //   description: "Sessione collaborativa per applicare i principi del design thinking a problemi reali.",
+    //   tags: ["design", "innovazione", "brainstorming"],
+    //   imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    // },
+    // {
+    //   date: "6 Marzo 2025",
+    //   title: "Yoga e Produttività",
+    //   description: "Un mix perfetto tra attività fisica e mentale per migliorare il benessere e la produttività.",
+    //   tags: ["benessere", "yoga", "produttività"],
+    //   imageUrl: "https://images.unsplash.com/photo-1599447539673-4c37d6df1de0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    // }
   ];
 
   return (
@@ -81,9 +81,9 @@ export default function PastEventsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Eventi Passati</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Eventi Futuri</h2>
           <p className="text-lg text-neutral">
-            Ecco alcuni dei nostri recenti "Saba-to-build" e le attività che abbiamo realizzato insieme.
+            Ecco alcuni dei nostri prossimi "Saba-to-build" e le attività che proporremo.
           </p>
         </motion.div>
 

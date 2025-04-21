@@ -55,7 +55,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              src="./assets/IMG_1643.jpeg" 
               alt="Spazio di co-working Saba-to-build" 
               className="rounded-lg shadow-lg w-full h-auto object-cover" 
             />

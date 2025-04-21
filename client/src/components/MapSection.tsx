@@ -17,7 +17,7 @@ export default function MapSection() {
                 <div className="text-center p-6">
                   <i className="bx bx-map-alt text-6xl text-neutral mb-4"></i>
                   <h3 className="text-xl font-heading font-semibold">Mappa dello Spazio</h3>
-                  <p className="text-neutral mt-2">Via Roma 123, 00100 Roma</p>
+                  <p className="text-neutral mt-2">Via Bolzano 20 Molina di Fiemme</p>
                 </div>
               </div>
             </div>

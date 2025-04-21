@@ -16,7 +16,7 @@ function ConceptCard({ icon, title, description, delay }: ConceptCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
     >
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-primary mb-6">
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
         <i className={`bx ${icon} text-3xl`}></i>
       </div>
       <h3 className="text-xl font-heading font-bold mb-4">{title}</h3>

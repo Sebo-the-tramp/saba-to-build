@@ -88,7 +88,7 @@ export default function ScheduleSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="px-6 py-5 border-b border-gray-100 bg-primary bg-opacity-5">
-            <h3 className="text-xl font-heading font-bold text-primary">Ogni Sabato</h3>
+            <h3 className="text-xl font-heading font-bold text-white">Ogni Sabato</h3>
           </div>
           
           <div className="divide-y divide-gray-100">
