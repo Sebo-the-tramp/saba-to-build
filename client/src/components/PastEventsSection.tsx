@@ -53,7 +53,7 @@ export default function PastEventsSection() {
       title: "Kick off e Presentazione progetto",
       description: "La prima giornata in cui presentiamo il progetto e diamo il via ad un estate di eventi.",     
       tags: ["kick-off", "building"],
-      imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      imageUrl: "./assets/spazio_per_creare.jpg"
     },
     // {
     //   date: "13 Marzo 2025",

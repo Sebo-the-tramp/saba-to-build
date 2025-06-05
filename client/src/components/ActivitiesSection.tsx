@@ -61,7 +61,7 @@ export default function ActivitiesSection() {
           title="Costruire e Creare"
           description="Porta avanti i tuoi progetti personali o partecipa a progetti collettivi. Che si tratti di coding, design, artigianato o qualsiasi altra forma di creazione, qui troverai lo spazio e il supporto necessari."
           benefit="Ambiente tranquillo e produttivo"
-          imageUrl="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          imageUrl="./assets/VR.jpg"
           imageAlt="Persone che lavorano insieme"
           delay={0.1}
         />
@@ -80,7 +80,7 @@ export default function ActivitiesSection() {
           title="Fare Sport"
           description="Per mantenere mente e corpo in equilibrio, organizziamo brevi pause dedicate all'attività fisica. Dalla semplice stretching a sessioni più intense, a seconda delle preferenze dei partecipanti."
           benefit="Benessere fisico e mentale"
-          imageUrl="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          imageUrl="./assets/birkengym_logo.jpg"
           imageAlt="Attività sportiva"
           delay={0.3}
         />
