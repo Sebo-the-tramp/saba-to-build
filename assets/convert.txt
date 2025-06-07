@@ -1,0 +1,1 @@
+for img in *.jpg *.jpeg; do magick "$img" -resize 1024x -quality 70 "${img%.*}.webp"; done
