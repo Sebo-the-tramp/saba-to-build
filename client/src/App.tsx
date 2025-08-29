@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import EventiArchivio from "@/pages/EventiArchivio";
+import EventDetails from "@/pages/EventDetails";
 import { useState, useEffect } from "react";
 
 // Create a hash-based location hook for wouter
@@ -38,6 +39,7 @@ function AppRouter() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/archivio-eventi" component={EventiArchivio} />
+        <Route path="/evento/:id" component={EventDetails} />
         <Route component={NotFound} />
       </Switch>
     </Router>

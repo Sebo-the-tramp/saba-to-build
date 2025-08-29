@@ -10,58 +10,63 @@ interface EventProps {
   tags: string[];
   imageUrl: string;
   index: number;
+  id: string;
 }
 
-function Event({ date, title, description, tags, imageUrl, index }: EventProps) {
+function Event({ date, title, description, tags, imageUrl, index, id }: EventProps) {
   return (
-    <motion.div
-      className="bg-white rounded-lg shadow overflow-hidden flex flex-col"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.1 * index }}
-    >
-      <div className="h-48 relative overflow-hidden">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-        />
-        <span className="absolute top-3 left-3 bg-white/90 text-primary px-3 py-1 rounded-full text-sm font-semibold">
-          {date}
-        </span>
-      </div>
-      <div className="p-5 flex flex-col flex-grow">
-        <h3 className="text-xl font-heading font-bold mb-2">{title}</h3>
-        <p className="text-neutral mb-4 flex-grow">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag, i) => (
-            <Badge key={i} variant="outline" className="bg-primary/5 text-primary border-primary/20">
-              {tag}
-            </Badge>
-          ))}
+    <Link href={`/evento/${id}`}>
+      <motion.div
+        className="bg-white rounded-lg shadow overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 * index }}
+      >
+        <div className="h-48 relative overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+          <span className="absolute top-3 left-3 bg-white/90 text-primary px-3 py-1 rounded-full text-sm font-semibold">
+            {date}
+          </span>
         </div>
-      </div>
-    </motion.div>
+        <div className="p-5 flex flex-col flex-grow">
+          <h3 className="text-xl font-heading font-bold mb-2">{title}</h3>
+          <p className="text-neutral mb-4 flex-grow">{description}</p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {tags.map((tag, i) => (
+              <Badge key={i} variant="outline" className="bg-primary/5 text-primary border-primary/20">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </Link>
   );
 }
 
 export default function PastEventsSection() {
   const pastEvents = [
     {
+      id: "kick-off-2025-06-07",
       date: "7 Giugno 2025",
       title: "Kick off e Presentazione progetto",
       description: "La prima giornata in cui presentiamo il progetto e diamo il via ad un estate di eventi.",     
       tags: ["kick-off", "building"],
       imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
-    // {
-    //   date: "13 Marzo 2025",
-    //   title: "Design Thinking",
-    //   description: "Sessione collaborativa per applicare i principi del design thinking a problemi reali.",
-    //   tags: ["design", "innovazione", "brainstorming"],
-    //   imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    // },
+    {
+      id: "second-saturday-2025-06-20",
+      date: "20 Giugno 2025",
+      title: "Secondo sabato di costruzione",
+      description: "Il secondo sabato di costruzione, dove si prosegue con Wellround",
+      tags: ["kick-off", "building"],
+      imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    },
     // {
     //   date: "6 Marzo 2025",
     //   title: "Yoga e Produttività",
@@ -91,6 +96,7 @@ export default function PastEventsSection() {
           {pastEvents.map((event, index) => (
             <Event
               key={index}
+              id={event.id}
               date={event.date}
               title={event.title}
               description={event.description}

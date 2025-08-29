@@ -59,38 +59,38 @@ export default function ActivitiesSection() {
         
         <Activity 
           title="Costruire e Creare"
-          description="Porta avanti i tuoi progetti personali o partecipa a progetti collettivi. Che si tratti di coding, design, artigianato o qualsiasi altra forma di creazione, qui troverai lo spazio e il supporto necessari."
-          benefit="Ambiente tranquillo e produttivo"
-          imageUrl="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          imageAlt="Persone che lavorano insieme"
+          description="Unisciti a noi per dare vita alle tue idee più creative! Che tu sia un coder, un designer o un maker, qui troverai lo spazio perfetto per trasformare i tuoi progetti in realtà. Porta il tuo laptop, le tue idee e la tua energia!"
+          benefit="Spazio creativo dove le idee prendono forma"
+          imageUrl="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          imageAlt="Team di sviluppatori che collaborano"
           delay={0.1}
         />
         
         <Activity 
           title="Condividere Conoscenze"
-          description="Ogni partecipante ha competenze uniche da condividere. Durante la giornata, ci sono momenti dedicati allo scambio di conoscenze, mini-workshop spontanei e discussioni stimolanti."
-          benefit="Crescita personale e professionale"
-          imageUrl="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          imageAlt="Persone che condividono idee"
+          description="Hai delle skills da flexare? Questo è il posto giusto! Scambia conoscenze, partecipa a workshop spontanei e immergiti in discussioni stimolanti. Ogni partecipante ha qualcosa di unico da offrire - e tu? Cosa vorresti condividere?"
+          benefit="Impara, cresci e connettiti con persone che la pensano come te"
+          imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          imageAlt="Workshop di programmazione"
           reversed={true}
           delay={0.2}
         />
         
         <Activity 
           title="Fare Sport"
-          description="Per mantenere mente e corpo in equilibrio, organizziamo brevi pause dedicate all'attività fisica. Dalla semplice stretching a sessioni più intense, a seconda delle preferenze dei partecipanti."
-          benefit="Benessere fisico e mentale"
-          imageUrl="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          imageAlt="Attività sportiva"
+          description="Time to get moving! Tra una sessione di coding e l'altra, organizziamo quick workout sessions per mantenere alta l'energia. Dallo stretching al cardio, scegli tu come vuoi muoverti. Perfetto per ricaricare mente e corpo!"
+          benefit="Stay fit while you code"
+          imageUrl="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          imageAlt="Gruppo di persone che fanno stretching"
           delay={0.3}
         />
         
         <Activity 
           title="Pranzo Condiviso"
-          description="Il momento del pranzo è un'occasione speciale per socializzare in modo informale. Ognuno può portare qualcosa da condividere o partecipare alla preparazione di un pasto comune."
-          benefit="Socializzazione e networking"
-          imageUrl="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          imageAlt="Pranzo condiviso"
+          description="Food + Tech = Perfect Match! Il momento del pranzo è l'occasione ideale per networking in modo chill. Porta il tuo snack preferito o unisciti alla preparazione di un pasto comune. Il cibo unisce sempre le persone migliori!"
+          benefit="Networking con gusto"
+          imageUrl="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+          imageAlt="Gruppo di persone che pranzano insieme"
           reversed={true}
           delay={0.4}
         />

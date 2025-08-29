@@ -30,21 +30,22 @@ export default function HeroSection() {
               <span className="text-primary">Saba-to-build:</span> Uno spazio per creare insieme
             </h1>
             <p className="text-lg md:text-xl text-neutral mb-8">
-              Ogni sabato, dalle 8:00 alle 18:00, la nostra casa diventa uno spazio di co-working dove costruire, condividere idee e fare sport insieme.
+              <strong>Cominciamo il 7 Giugno! </strong> 
+              Un sabato ogni 2 settimane, dalle 8:00 alle 18:00, la nostra casa diventa uno spazio condiviso dove costruire, condividere idee e fare sport insieme. L'evento è completamente gratuito e aperto a tutti! Se vuoi, porta qualcosa da mangiare o materiali da condividere per i progetti.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <Button 
                 className="bg-primary text-white font-heading hover:bg-primary/90 transition-all"
-                onClick={() => scrollToSection('orari')}
+                onClick={() => scrollToSection('eventi-passati')}
               >
-                Scopri gli orari
+                I want to build!
               </Button>
               <Button
                 variant="outline"
                 className="border-primary text-primary hover:bg-primary hover:text-white transition-all font-heading"
-                onClick={() => scrollToSection('contatti')}
+                onClick={() => scrollToSection('orari')}
               >
-                Contattaci
+                Orari e programma 
               </Button>
             </div>
           </motion.div>
@@ -55,8 +56,8 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <img 
-              src="./assets/IMG_1643.jpeg" 
-              alt="Spazio di co-working Saba-to-build" 
+              src="./assets/IMG_1643.webp" 
+              alt="Spazio condiviso Saba-to-build" 
               className="rounded-lg shadow-lg w-full h-auto object-cover" 
             />
           </motion.div>

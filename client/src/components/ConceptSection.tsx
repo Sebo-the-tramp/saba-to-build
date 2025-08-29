@@ -38,7 +38,7 @@ export default function ConceptSection() {
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Il Concetto</h2>
           <p className="text-lg text-neutral">
-            "Saba-to-build" nasce dall'idea di trasformare il sabato in un giorno dedicato alla creatività, alla condivisione e alla crescita personale e collettiva.
+            "Saba-to-build" nasce dall'idea di trasformare il sabato in un giorno dedicato alla creatività, alla condivisione e alla crescita personale e collettiva. Ispirato dalle hacker houses della Silicon Valley e da creator come levelsio e altri innovatori su Twitter, vogliamo portare questi concetti innovativi nella nostra Val di Fiemme, creando uno spazio dove la comunità possa crescere insieme.
           </p>
         </motion.div>
         

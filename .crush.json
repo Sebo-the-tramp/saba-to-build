@@ -1,0 +1,19 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "providers": {
+    "ollama": {
+      "name": "Ollama",
+      "base_url": "http://192.168.1.28:8000/v1",
+      "type": "openai",
+      "api_key": "token-abc123",
+      "models": [
+        {
+          "name": "GPT oss",
+          "id": "openai/gpt-oss-20b",
+          "context_window": 256000,
+          "default_max_tokens": 20000
+        }
+      ]
+    }
+  }
+}
