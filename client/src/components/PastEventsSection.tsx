@@ -2,124 +2,121 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { mediaAssets } from "@/lib/assets";
 
-interface EventProps {
+const launches = [
+  {
+    id: "kick-off-2025-06-07",
+    date: "7 Giugno 2025",
+    title: "Kick-off manifesto",
+    description: "Prima accensione ufficiale del laboratorio estivo, demo Wellround e installazione HPC.",
+    tags: ["kick-off", "community"],
+    imageUrl: mediaAssets.spazio,
+  },
+  {
+    id: "second-saturday-2025-06-20",
+    date: "20 Giugno 2025",
+    title: "Costruiamo Wellround",
+    description: "Sprint collettivo per il prodotto, coaching design system, beta test su VR room.",
+    tags: ["product", "design"],
+    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "mastermind-2025-07-05",
+    date: "5 Luglio 2025",
+    title: "Mastermind + sport edition",
+    description: "Coaching tra builder, pitch session, workout guidato da BirkenGym nel bosco.",
+    tags: ["mastermind", "sport"],
+    imageUrl: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=80",
+  },
+];
+
+function LaunchCard({
+  id,
+  date,
+  title,
+  description,
+  tags,
+  imageUrl,
+  index,
+}: {
+  id: string;
   date: string;
   title: string;
   description: string;
   tags: string[];
   imageUrl: string;
   index: number;
-  id: string;
-}
-
-function Event({ date, title, description, tags, imageUrl, index, id }: EventProps) {
+}) {
   return (
     <Link href={`/evento/${id}`}>
-      <motion.div
-        className="bg-white rounded-lg shadow overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
-        initial={{ opacity: 0, y: 20 }}
+      <motion.article
+        className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] text-white"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 * index }}
+        transition={{ duration: 0.4, delay: 0.1 * index }}
       >
-        <div className="h-48 relative overflow-hidden">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          />
-          <span className="absolute top-3 left-3 bg-white/90 text-primary px-3 py-1 rounded-full text-sm font-semibold">
+        <div className="relative h-56 overflow-hidden">
+          <img src={imageUrl} alt={title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <span className="absolute top-4 left-4 rounded-full border border-white/30 bg-black/60 px-3 py-1 text-xs uppercase tracking-[0.3em]">
             {date}
           </span>
         </div>
-        <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-xl font-heading font-bold mb-2">{title}</h3>
-          <p className="text-neutral mb-4 flex-grow">{description}</p>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {tags.map((tag, i) => (
-              <Badge key={i} variant="outline" className="bg-primary/5 text-primary border-primary/20">
+        <div className="space-y-4 p-6">
+          <h3 className="font-heading text-2xl">{title}</h3>
+          <p className="text-slate-300">{description}</p>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <Badge key={tag} className="border-white/20 bg-white/5 text-xs uppercase tracking-[0.2em]">
                 {tag}
               </Badge>
             ))}
           </div>
         </div>
-      </motion.div>
+      </motion.article>
     </Link>
   );
 }
 
 export default function PastEventsSection() {
-  const pastEvents = [
-    {
-      id: "kick-off-2025-06-07",
-      date: "7 Giugno 2025",
-      title: "Kick off e Presentazione progetto",
-      description: "La prima giornata in cui presentiamo il progetto e diamo il via ad un estate di eventi.",     
-      tags: ["kick-off", "building"],
-      imageUrl: "./assets/spazio_per_creare.jpg"
-    },
-    {
-      id: "second-saturday-2025-06-20",
-      date: "20 Giugno 2025",
-      title: "Secondo sabato di costruzione",
-      description: "Il secondo sabato di costruzione, dove si prosegue con Wellround",
-      tags: ["kick-off", "building"],
-      imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    },
-    // {
-    //   date: "6 Marzo 2025",
-    //   title: "Yoga e Produttività",
-    //   description: "Un mix perfetto tra attività fisica e mentale per migliorare il benessere e la produttività.",
-    //   tags: ["benessere", "yoga", "produttività"],
-    //   imageUrl: "https://images.unsplash.com/photo-1599447539673-4c37d6df1de0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    // }
-  ];
-
   return (
-    <section id="eventi-passati" className="py-16 md:py-24 bg-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="eventi-passati" className="bg-[#04040e] py-24 text-white min-h-screen">
+      <div className="mx-auto w-full px-4 sm:px-10 lg:px-16">
         <motion.div
-          className="max-w-3xl mx-auto text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Eventi Futuri</h2>
-          <p className="text-lg text-neutral">
-            Ecco alcuni dei nostri prossimi "Saba-to-build" e le attività che proporremo.
-          </p>
+          <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Next launches</p>
+          <h2 className="mt-4 font-heading text-4xl md:text-5xl">I prossimi capitoli.</h2>
+          <p className="mt-4 text-lg text-slate-300">Ogni data cambia ritmo: hack, mastermind, sport.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {pastEvents.map((event, index) => (
-            <Event
-              key={index}
-              id={event.id}
-              date={event.date}
-              title={event.title}
-              description={event.description}
-              tags={event.tags}
-              imageUrl={event.imageUrl}
-              index={index}
-            />
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {launches.map((launch, index) => (
+            <LaunchCard key={launch.id} {...launch} index={index} />
           ))}
         </div>
 
         <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-12 flex flex-col items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.02] px-8 py-10 text-center text-white md:flex-row md:text-left"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
+          <div>
+            <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">Archivio</p>
+            <p className="mt-3 text-lg text-slate-200">
+              Vuoi vedere cosa abbiamo già costruito? Scopri tutte le edizioni e i progetti nati.
+            </p>
+          </div>
           <Link href="/archivio-eventi">
-            <Button
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-white transition-all font-heading"
-            >
-              Vedi tutti gli eventi <i className="bx bx-right-arrow-alt ml-2"></i>
+            <Button className="bg-primary px-6 py-6 text-white font-heading tracking-[0.25em] uppercase">
+              Vedi l&apos;archivio
             </Button>
           </Link>
         </motion.div>

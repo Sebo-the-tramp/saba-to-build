@@ -1,69 +1,95 @@
 import { motion } from "framer-motion";
 
-interface ConceptCardProps {
-  icon: string;
+const manifesto = [
+  {
+    title: "Build senza permessi",
+    description: "La casa diventa laboratorio. Spazi mobili, prototipi rapidi.",
+    accent: "Itera",
+  },
+  {
+    title: "Loop di apprendimento",
+    description: "Workshop improvvisati, mentorship tra pari, feedback immediati.",
+    accent: "Condividi",
+  },
+  {
+    title: "Energia tribale",
+    description: "Tecnologia, sport, cibo. Corpo e mente allineati.",
+    accent: "Stai sveglio",
+  },
+];
+
+function ManifestoCard({
+  title,
+  description,
+  accent,
+  delay,
+}: {
   title: string;
   description: string;
+  accent: string;
   delay: number;
-}
-
-function ConceptCard({ icon, title, description, delay }: ConceptCardProps) {
+}) {
   return (
-    <motion.div 
-      className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all text-center"
-      initial={{ opacity: 0, y: 20 }}
+    <motion.div
+      className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8"
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.4, delay }}
     >
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-        <i className={`bx ${icon} text-3xl`}></i>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent opacity-70" />
+      <div className="relative space-y-3">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary">{accent}</p>
+        <h3 className="text-2xl font-heading text-white">{title}</h3>
+        <p className="text-slate-300">{description}</p>
       </div>
-      <h3 className="text-xl font-heading font-bold mb-4">{title}</h3>
-      <p className="text-neutral">{description}</p>
     </motion.div>
   );
 }
 
 export default function ConceptSection() {
   return (
-    <section id="concetto" className="py-16 md:py-24 bg-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+    <section id="manifesto" className="relative min-h-screen overflow-hidden bg-[#050714] py-24 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,_rgba(114,90,249,0.15),_transparent_45%)]" />
+      <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-l from-primary/10 to-transparent lg:block" />
+
+      <div className="relative mx-auto w-full px-4 sm:px-10 lg:px-16">
+        <motion.div
+          className="max-w-3xl space-y-6"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Il Concetto</h2>
-          <p className="text-lg text-neutral">
-            "Saba-to-build" nasce dall'idea di trasformare il sabato in un giorno dedicato alla creatività, alla condivisione e alla crescita personale e collettiva. Ispirato dalle hacker houses della Silicon Valley e da creator come levelsio e altri innovatori su Twitter, vogliamo portare questi concetti innovativi nella nostra Val di Fiemme, creando uno spazio dove la comunità possa crescere insieme.
+          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Manifesto</p>
+          <h2 className="font-heading text-4xl text-white md:text-5xl">Costruiamo per chi fa, non per chi guarda.</h2>
+          <p className="text-lg text-slate-300">Ogni sabato cambia. Nessun builder resta solo. Le idee devono muoversi.</p>
+        </motion.div>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {manifesto.map((point, index) => (
+            <ManifestoCard
+              key={point.title}
+              title={point.title}
+              description={point.description}
+              accent={point.accent}
+              delay={0.1 * (index + 1)}
+            />
+          ))}
+        </div>
+
+        <motion.div
+          className="mt-16 rounded-3xl border border-white/10 bg-white/[0.03] p-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">Promessa</p>
+          <p className="mt-4 text-2xl text-white">
+            Builder, sognatori, believer. Porta ciò che sai, prendi ciò che serve, lascia un impatto.
           </p>
         </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <ConceptCard 
-            icon="bx-bulb" 
-            title="Creatività" 
-            description="Uno spazio dove le idee prendono forma, dove puoi concentrarti sui tuoi progetti in un ambiente stimolante."
-            delay={0.1}
-          />
-          
-          <ConceptCard 
-            icon="bx-chat" 
-            title="Condivisione" 
-            description="Scambia idee, conosci nuove persone e collabora a progetti comuni in un ambiente accogliente e informale."
-            delay={0.2}
-          />
-          
-          <ConceptCard 
-            icon="bx-group" 
-            title="Comunità" 
-            description="Creiamo insieme un ambiente dove ci si sente parte di qualcosa di più grande, dove il supporto reciproco è fondamentale."
-            delay={0.3}
-          />
-        </div>
       </div>
     </section>
   );

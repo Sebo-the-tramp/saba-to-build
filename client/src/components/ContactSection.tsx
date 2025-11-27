@@ -1,133 +1,97 @@
 import { motion } from "framer-motion";
 
-interface ContactInfoItemProps {
-  icon: string;
-  title: string;
-  content: string;
-  delay: number;
-}
+const contactChannels = [
+  {
+    label: "Email",
+    value: "sebastian.cavada.dev@gmail.com",
+    icon: "bx-envelope",
+  },
+  {
+    label: "Telefono",
+    value: "+39 370 311 5683",
+    icon: "bx-phone",
+  },
+  {
+    label: "Base",
+    value: "Via Bolzano 20 · Molina di Fiemme",
+    icon: "bx-map",
+  },
+];
 
-function ContactInfoItem({ icon, title, content, delay }: ContactInfoItemProps) {
-  return (
-    <motion.div 
-      className="flex items-start"
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay }}
-    >
-      <div className="flex-shrink-0 mt-1">
-        <div className="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
-          <i className={`bx ${icon} text-primary`}></i>
-        </div>
-      </div>
-      <div className="ml-4">
-        <h4 className="text-lg font-heading font-semibold">{title}</h4>
-        <p className="text-neutral mt-1">{content}</p>
-      </div>
-    </motion.div>
-  );
-}
-
-interface SocialLinkProps {
-  icon: string;
-  href: string;
-  delay: number;
-}
-
-function SocialLink({ icon, href, delay }: SocialLinkProps) {
-  return (
-    <motion.a 
-      href={href}
-      className="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay }}
-    >
-      <i className={`bx ${icon}`}></i>
-    </motion.a>
-  );
-}
+const socials = [
+  { icon: "bxl-instagram", href: "#" },
+  { icon: "bxl-twitter", href: "#" },
+  { icon: "bxl-linkedin", href: "#" },
+  { icon: "bxl-telegram", href: "#" },
+];
 
 export default function ContactSection() {
   return (
-    <section id="contatti" className="py-16 md:py-24 bg-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            className="max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Contattaci</h2>
-            <p className="text-lg text-neutral mb-12 text-center">
-              Hai domande sul nostro "Saba-to-build"? Vuoi partecipare o hai suggerimenti da condividere? Contattaci!
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              className="bg-white rounded-lg shadow p-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-                <i className="bx bx-map text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3">Indirizzo</h3>
-              <p className="text-neutral">Via Bolzano 20<br />38030 Molina di Fiemme</p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white rounded-lg shadow p-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-                <i className="bx bx-envelope text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3">Email</h3>
-              <p className="text-neutral">sebastian.cavada.dev@gmail.com</p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white rounded-lg shadow p-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-                <i className="bx bx-phone text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3">Telefono</h3>
-              <p className="text-neutral">+39 3703115683</p>
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            className="mt-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h3 className="text-xl font-heading font-semibold mb-4">Seguici sui Social</h3>
-            <div className="flex justify-center space-x-4">
-              <SocialLink icon="bxl-instagram text-white" href="#" delay={0.1} />
-              <SocialLink icon="bxl-facebook text-white" href="#" delay={0.2} />
-              <SocialLink icon="bxl-whatsapp text-white" href="#" delay={0.3} />
-              <SocialLink icon="bxl-telegram text-white" href="#" delay={0.4} />
+    <section id="contatti" className="relative overflow-hidden bg-[#020207] py-24 text-white min-h-screen">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.2),transparent_55%)]" />
+      <div className="relative mx-auto w-full px-4 sm:px-10 lg:px-16">
+        <motion.div
+          className="grid gap-10 rounded-[2.5rem] border border-white/10 bg-white/[0.02] p-10 md:grid-cols-[1.1fr,0.9fr]"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="space-y-6">
+            <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Crew support</p>
+            <h2 className="font-heading text-4xl md:text-5xl">Vuoi accendere qualcosa? Scrivi.</h2>
+            <p className="text-lg text-slate-300">Tre righe: cosa costruisci, che blocco hai, cosa puoi dare.</p>
+            <div className="grid gap-4 rounded-3xl border border-white/10 bg-primary/10 p-6 text-white">
+              <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">Join the waitlist</p>
+              <p>Oggetto: “I want to build”. Poi tre bullet. Tutto qui.</p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="rounded-[1.5rem] border border-white/10 bg-black/40 p-6">
+              <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">Coordinate</p>
+              <div className="mt-6 space-y-4 text-slate-200">
+                {contactChannels.map((channel, index) => (
+                  <motion.div
+                    key={channel.label}
+                    className="flex items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                  >
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 text-primary">
+                      <i className={`bx ${channel.icon} text-2xl`} />
+                    </span>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{channel.label}</p>
+                      <p className="text-lg text-white">{channel.value}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6">
+              <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">Stay tuned</p>
+              <div className="mt-4 flex items-center gap-3">
+                {socials.map((social, index) => (
+                  <motion.a
+                    key={social.icon}
+                    href={social.href}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white transition-colors hover:border-primary hover:text-primary"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.05 * index }}
+                  >
+                    <i className={`bx ${social.icon} text-xl`} />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

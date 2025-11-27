@@ -1,126 +1,126 @@
-import { useRoute } from "wouter";
+import { useRoute, Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { mediaAssets } from "@/lib/assets";
 
-// This would typically come from an API or database
 const eventsData = {
   "kick-off-2025-06-07": {
     date: "7 Giugno 2025",
-    title: "Kick off e Presentazione progetto",
-    description: "La prima giornata in cui presentiamo il progetto e diamo il via ad un estate di eventi.",
-    longDescription: `Un evento speciale per dare il via alla nostra estate di costruzione e innovazione. 
-    Durante questa giornata, presenteremo in dettaglio il progetto, i suoi obiettivi e il programma delle attività.
-    Sarà un'occasione perfetta per conoscere gli altri partecipanti e iniziare a costruire insieme la nostra comunità.
-    Quello che abbiamo fatto:
-    - Presentazione del progetto
-    - Creazione di un HPC con login node e diversi computer (nodi) per la costruzione di un cluster di computer.
-    - Installazione CUDA (chi sa sa quanto e' difficile) per farla funzionare con la 5090.
-    - Creazione di un architettura software per wellround, facendo in un pomeriggio, quello che ci Sebastian ci avrebbe messo 3 giorni.
-    - Merenda e zucchi di frutta.
-    - Memes.
-    - E molto altro.
-    `,
-    tags: ["kick-off", "building"],
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    title: "Kick off manifesto",
+    description: "La base prende vita: HPC acceso, valori condivisi, Wellround attivo.",
+    longDescription: `Cluster con login node, CUDA sulla 5090, architettura Wellround, manifesto in cerchio.
+Pranzo condiviso e demo lampo: ognuno è uscito con un impegno.`,
+    tags: ["kick-off", "hardware", "community"],
+    imageUrl: mediaAssets.spazio,
     registrationFormUrl: "",
-    location: "Molina di Fiemme, via Bolzano 20",
-    time: "8:00 - 18:00"
+    location: "Via Bolzano 20 · Molina di Fiemme",
+    time: "8:00 - 18:00",
   },
   "second-saturday-2025-06-20": {
     date: "20 Giugno 2025",
-    title: "Secondo sabato di costruzione",
-    description: "Il secondo sabato di costruzione, dove si prosegue con Wellround",
-    longDescription: `Un evento easy, dove si proseguono i progetti di costruzione.
-    `,
-    tags: ["kick-off", "building"],
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    registrationFormUrl: "", // Replace with actual form URL
-    location: "Molina di Fiemme, via Bolzano 20",
-    time: "8:00 - 18:00"
-  }
+    title: "Costruiamo Wellround",
+    description: "Design, VR walkthrough e coaching BirkenGym nello stesso giorno.",
+    longDescription: `Interfacce Wellround stressate, pair programming, VR testing.
+Chiusura con allenamento collettivo.`,
+    tags: ["product", "design", "sport"],
+    imageUrl: mediaAssets.vr,
+    registrationFormUrl: "",
+    location: "Via Bolzano 20 · Molina di Fiemme",
+    time: "8:00 - 18:00",
+  },
+  "mastermind-2025-07-05": {
+    date: "5 Luglio 2025",
+    title: "Mastermind + sport edition",
+    description: "Sessioni mastermind, pitch, corsa nel bosco e cold plunge finale.",
+    longDescription: `Il formato più intimo e potente. Ogni builder porta un challenge, riceve feedback, si allena e riparte leggero.
+Abbiamo creato accountability loop e definito roadmap condivise.`,
+    tags: ["mastermind", "accountability"],
+    imageUrl: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80",
+    registrationFormUrl: "",
+    location: "Bosco di Molina + Base camp",
+    time: "8:00 - 18:00",
+  },
 };
 
 export default function EventDetails() {
   const [, params] = useRoute("/evento/:id");
   const eventId = params?.id;
-  console.log('Route params:', params);
-  console.log('Event ID:', eventId);
-  console.log('Available events:', Object.keys(eventsData));
   const event = eventId ? eventsData[eventId as keyof typeof eventsData] : null;
-  console.log('Found event:', event);
 
   if (!event) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold">Evento non trovato</h1>
-        <p className="mt-4 text-neutral">ID: {eventId}</p>
+      <div className="min-h-screen bg-[#010208] px-4 py-24 text-center text-white">
+        <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Oops</p>
+        <h1 className="mt-4 text-3xl font-heading">Evento non trovato</h1>
+        <p className="mt-2 text-slate-400">ID: {eventId}</p>
+        <Link href="/">
+          <Button className="mt-6 bg-primary px-8 py-6 text-white font-heading tracking-[0.35em] uppercase">Torna alla Home</Button>
+        </Link>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-light py-16">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="h-64 md:h-96 relative">
-              <img
-                src={event.imageUrl}
-                alt={event.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-white text-center px-4">
-                  {event.title}
-                </h1>
+    <div className="min-h-screen bg-[#010208] py-20 text-white">
+      <div className="mx-auto w-full px-4 sm:px-10 lg:px-16">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <div className="overflow-hidden rounded-[3rem] border border-white/10 bg-white/[0.02]">
+            <div className="relative h-72 sm:h-96">
+              <img src={event.imageUrl} alt={event.title} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 space-y-3">
+                <span className="rounded-full border border-white/40 px-4 py-1 text-xs uppercase tracking-[0.35em] text-white">
+                  {event.date}
+                </span>
+                <h1 className="text-4xl font-heading sm:text-5xl">{event.title}</h1>
+                <p className="max-w-2xl text-lg text-slate-200">{event.description}</p>
               </div>
             </div>
 
-            <div className="p-6 md:p-8">
-              <div className="flex flex-wrap gap-2 mb-6">
-                {event.tags.map((tag, i) => (
-                  <Badge key={i} variant="outline" className="bg-primary/5 text-primary border-primary/20">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div>
-                  <h2 className="text-xl font-semibold mb-2">Data e Ora</h2>
-                  <p className="text-neutral">{event.date}</p>
-                  <p className="text-neutral">{event.time}</p>
+            <div className="grid gap-10 p-8 md:grid-cols-[1fr,0.7fr]">
+              <div>
+                <div className="flex flex-wrap gap-2">
+                  {event.tags.map((tag) => (
+                    <Badge key={tag} className="border-white/20 bg-white/5 text-xs uppercase tracking-[0.3em] text-white">
+                      {tag}
+                    </Badge>
+                  ))}
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold mb-2">Location</h2>
-                  <p className="text-neutral">{event.location}</p>
+                <div className="mt-8 space-y-4 text-lg text-slate-200">
+                  {event.longDescription.split("\n").map((line, idx) => (
+                    <p key={idx}>{line.trim()}</p>
+                  ))}
                 </div>
               </div>
-
-              <div className="prose max-w-none mb-8">
-                <h2 className="text-2xl font-bold mb-4">Descrizione</h2>
-                <p className="text-neutral whitespace-pre-line">{event.longDescription}</p>
-              </div>
-
-              {event.registrationFormUrl && (
-                <div className="text-center">
+              <div className="space-y-6 rounded-3xl border border-white/10 bg-black/40 p-6 text-slate-200">
+                <div>
+                  <p className="font-heading text-xs uppercase tracking-[0.35em] text-primary">Data & Ora</p>
+                  <p className="mt-3 text-xl text-white">{event.date}</p>
+                  <p>{event.time}</p>
+                </div>
+                <div>
+                  <p className="font-heading text-xs uppercase tracking-[0.35em] text-primary">Location</p>
+                  <p className="mt-3 text-xl text-white">{event.location}</p>
+                </div>
+                {event.registrationFormUrl && (
                   <a href={event.registrationFormUrl} target="_blank" rel="noopener noreferrer">
-                    <Button className="bg-primary text-white hover:bg-primary/90 px-8 py-6 text-lg">
-                      Registrati all'evento
-                    </Button>
+                    <Button className="w-full bg-primary px-4 py-6 text-white font-heading tracking-[0.35em] uppercase">Registrati</Button>
                   </a>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </motion.div>
+
+        <div className="mt-10 text-center">
+          <Link href="/">
+            <Button variant="outline" className="border-white/30 text-white font-heading tracking-[0.35em] uppercase hover:bg-white/10">
+              Torna alla Home
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
-} 
+}

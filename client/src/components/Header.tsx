@@ -1,5 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+
+const navItems = [
+  { label: "Manifesto", id: "manifesto" },
+  { label: "Programma", id: "orari" },
+  { label: "Esperienze", id: "attivita" },
+  { label: "Lanci", id: "eventi-passati" },
+  { label: "Contatti", id: "contatti" },
+];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,93 +20,88 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      closeMenu();
-    }
+    if (!element) return;
+    const headerOffset = 90;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    setIsMenuOpen(false);
   };
 
+  const baseClasses =
+    "fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10";
+  const scrolledClasses =
+    "bg-[#02030d]/95 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.55)] py-3";
+  const topClasses = "bg-transparent py-6";
+
   return (
-    <header className={`bg-white shadow-sm fixed w-full top-0 z-50 transition-all ${scrollY > 50 ? 'py-2' : 'py-4'}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <motion.a 
-              href="#" 
-              className="text-2xl font-heading font-bold text-primary"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              Saba-to-build
-            </motion.a>
-          </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button 
-              className="text-secondary hover:text-primary focus:outline-none" 
-              aria-label="Menu"
-              onClick={toggleMenu}
-            >
-              <i className={`bx ${isMenuOpen ? 'bx-x' : 'bx-menu'} text-2xl`}></i>
-            </button>
-          </div>
-          
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <NavLink label="Concetto" id="concetto" onClick={() => scrollToSection('concetto')} />
-            <NavLink label="Attività" id="attivita" onClick={() => scrollToSection('attivita')} />
-            <NavLink label="Orari" id="orari" onClick={() => scrollToSection('orari')} />
-            <NavLink label="Galleria" id="galleria" onClick={() => scrollToSection('galleria')} />
-            <NavLink label="Eventi Passati" id="eventi-passati" onClick={() => scrollToSection('eventi-passati')} />
-            <NavLink label="Contatti" id="contatti" onClick={() => scrollToSection('contatti')} />
-          </nav>
+    <header className={`${baseClasses} ${scrollY > 20 ? scrolledClasses : topClasses}`}>
+      <div className="mx-auto flex w-full items-center justify-between px-4 sm:px-10 lg:px-16">
+        <motion.a
+          href="#hero"
+          className="font-heading text-lg font-semibold tracking-[0.3em] text-white"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          SABA TO BUILD
+        </motion.a>
+
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-300">
+          {navItems.map((item) => (
+            <NavLink key={item.id} label={item.label} id={item.id} onClick={() => scrollToSection(item.id)} />
+          ))}
+        </nav>
+
+        <div className="hidden md:flex items-center gap-3">
+          <Button
+            className="bg-primary text-white font-heading tracking-widest uppercase text-xs"
+            onClick={() => scrollToSection("eventi-passati")}
+          >
+            Prenota un posto
+          </Button>
         </div>
+
+        <button
+          className="flex items-center justify-center rounded-md border border-white/10 p-2 text-white/80 lg:hidden"
+          aria-label="Menu"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+        >
+          <i className={`bx ${isMenuOpen ? "bx-x" : "bx-menu"} text-2xl`}></i>
+        </button>
       </div>
-      
-      {/* Mobile navigation */}
+
       {isMenuOpen && (
-        <motion.div 
-          className="md:hidden border-t border-gray-200"
+        <motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          className="lg:hidden border-t border-white/10 bg-[#02030d]/95 backdrop-blur-xl"
         >
-          <div className="container mx-auto px-4 py-3 space-y-3">
-            <NavLink mobile={true} label="Concetto" id="concetto" onClick={() => scrollToSection('concetto')} />
-            <NavLink mobile={true} label="Attività" id="attivita" onClick={() => scrollToSection('attivita')} />
-            <NavLink mobile={true} label="Orari" id="orari" onClick={() => scrollToSection('orari')} />
-            <NavLink mobile={true} label="Galleria" id="galleria" onClick={() => scrollToSection('galleria')} />
-            <NavLink mobile={true} label="Eventi Passati" id="eventi-passati" onClick={() => scrollToSection('eventi-passati')} />
-            <NavLink mobile={true} label="Contatti" id="contatti" onClick={() => scrollToSection('contatti')} />
+          <div className="mx-auto flex w-full flex-col space-y-4 px-6 py-6 sm:px-10 lg:px-16">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.id}
+                label={item.label}
+                id={item.id}
+                mobile
+                onClick={() => scrollToSection(item.id)}
+              />
+            ))}
+            <Button
+              className="w-full bg-primary text-white font-heading tracking-[0.25em] uppercase"
+              onClick={() => scrollToSection("eventi-passati")}
+            >
+              Join the Build
+            </Button>
           </div>
         </motion.div>
       )}
@@ -114,15 +118,14 @@ interface NavLinkProps {
 
 function NavLink({ label, id, onClick, mobile = false }: NavLinkProps) {
   return (
-    <a 
-      href={`#${id}`}
-      className={`font-heading text-neutral hover:text-primary transition-all ${mobile ? 'block' : ''}`}
-      onClick={(e) => {
-        e.preventDefault();
-        onClick();
-      }}
+    <button
+      type="button"
+      className={`font-heading tracking-[0.2em] uppercase transition-colors ${
+        mobile ? "text-left text-white" : "text-slate-300 hover:text-white"
+      }`}
+      onClick={onClick}
     >
       {label}
-    </a>
+    </button>
   );
 }
