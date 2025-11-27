@@ -41,9 +41,9 @@ export default function HeroSection() {
             <div>
               <h1 className="font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
                 Per chi costruisce.
-                <span className="block text-primary">Per chi non molla.</span>
+                <span className="block text-primary">Per i sognatori.</span>
               </h1>
-              <p className="mt-6 text-lg text-slate-300 md:text-xl">Casa, laboratorio e crew. Niente pose, solo prototipi.</p>
+              <p className="mt-6 text-lg text-slate-300 md:text-xl">Persone, computer e palestra.</p>
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -81,7 +81,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/20 to-pink-500/20 blur-3xl" />
             <div className="relative rounded-[2.5rem] border border-white/15 bg-white/[0.04] p-8 shadow-[0_0_60px_rgba(0,0,0,0.45)]">
               <p className="text-xs uppercase tracking-[0.35em] text-emerald-200">Next build cycle</p>
-              <p className="mt-4 font-heading text-4xl text-white">7 Giugno · 8:00 → 18:00</p>
+              <p className="mt-4 font-heading text-4xl text-white">29 Novembre · 8:00 → 18:00</p>
               <p className="mt-2 text-sm text-slate-300">Molina di Fiemme · Via Bolzano 20</p>
 
               <div className="mt-8 space-y-4 text-sm text-slate-300">
@@ -96,7 +96,7 @@ export default function HeroSection() {
               </div>
 
               <div className="mt-10 rounded-2xl border border-white/10 bg-primary/10 p-6">
-                <p className="font-heading text-base uppercase tracking-[0.35em] text-primary">Regola 01</p>
+                <p className="font-heading text-base uppercase tracking-[0.35em] text-primary">Unica regola</p>
                 <p className="mt-2 text-lg text-white">Arriva con un problema. Esci con un pezzo di soluzione.</p>
               </div>
             </div>

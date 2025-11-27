@@ -29,7 +29,7 @@ export default function ScheduleSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Programma</p>
-          <h2 className="mt-4 font-heading text-4xl md:text-5xl">Un sabato, tanti cicli.</h2>
+          <h2 className="mt-4 font-heading text-4xl md:text-5xl">Un sabato, una missione.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-300">Focus, reset, sharing, ship. Ripeti.</p>
         </motion.div>
 
