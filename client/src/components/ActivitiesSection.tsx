@@ -59,10 +59,10 @@ export default function ActivitiesSection() {
         
         <Activity 
           title="Costruire e Creare"
-          description="Unisciti a noi per dare vita alle tue idee più creative! Che tu sia un coder, un designer o un maker, qui troverai lo spazio perfetto per trasformare i tuoi progetti in realtà. Porta il tuo laptop, le tue idee e la tua energia!"
-          benefit="Spazio creativo dove le idee prendono forma"
-          imageUrl="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          imageAlt="Team di sviluppatori che collaborano"
+          description="Porta avanti i tuoi progetti personali o partecipa a progetti collettivi. Che si tratti di coding, design, artigianato o qualsiasi altra forma di creazione, qui troverai lo spazio e il supporto necessari."
+          benefit="Ambiente tranquillo e produttivo"
+          imageUrl="./assets/VR.jpg"
+          imageAlt="Persone che lavorano insieme"
           delay={0.1}
         />
         
@@ -78,10 +78,10 @@ export default function ActivitiesSection() {
         
         <Activity 
           title="Fare Sport"
-          description="Time to get moving! Tra una sessione di coding e l'altra, organizziamo quick workout sessions per mantenere alta l'energia. Dallo stretching al cardio, scegli tu come vuoi muoverti. Perfetto per ricaricare mente e corpo!"
-          benefit="Stay fit while you code"
-          imageUrl="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-          imageAlt="Gruppo di persone che fanno stretching"
+          description="Per mantenere mente e corpo in equilibrio, organizziamo brevi pause dedicate all'attività fisica. Dalla semplice stretching a sessioni più intense, a seconda delle preferenze dei partecipanti."
+          benefit="Benessere fisico e mentale"
+          imageUrl="./assets/birkengym_logo.jpg"
+          imageAlt="Attività sportiva"
           delay={0.3}
         />
         

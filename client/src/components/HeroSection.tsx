@@ -56,8 +56,8 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <img 
-              src="./assets/IMG_1643.webp" 
-              alt="Spazio condiviso Saba-to-build" 
+              src="./assets/spazio_per_creare.jpg" 
+              alt="Spazio di co-working Saba-to-build" 
               className="rounded-lg shadow-lg w-full h-auto object-cover" 
             />
           </motion.div>

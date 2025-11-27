@@ -33,22 +33,22 @@ function GalleryImage({ src, alt, caption, delay }: GalleryImageProps) {
 export default function GallerySection() {
   const galleryImages = [
     {
-      src: "./assets/IMG_1643.webp",
+      src: "./assets/spazio_per_creare.jpg",
       alt: "Spazio di lavoro condiviso",
       caption: "Spazio di lavoro principale"
     },
     {
-      src: "./assets/IMG_1644.webp",
+      src: "/assets/baretto.jpg",
       alt: "Area relax",
       caption: "Area relax"
     },
     {
-      src: "./assets/IMG_1645.webp",
+      src: "/assets/relax.jpg",
       alt: "Sessione di condivisione",
       caption: "Sessione di condivisione"
     },
     {
-      src: "./assets/IMG_1646.webp",
+      src: "/assets/VR.jpg",
       alt: "Collaborazione su progetti",
       caption: "Collaborazione su progetti"
     },
