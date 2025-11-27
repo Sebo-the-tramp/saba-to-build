@@ -63,3 +63,18 @@
     color: hsl(var(--primary-foreground));
   }
 }
+
+@layer components {
+  .firefly {
+    will-change: transform, opacity;
+  }
+}
+
+.leaflet-container {
+  z-index: 0;
+}
+
+.leaflet-pane,
+.leaflet-control {
+  z-index: 40 !important;
+}

@@ -1,22 +1,75 @@
 import { motion } from "framer-motion";
+import type { Locale } from "@/lib/i18n";
 
-const manifesto = [
+const manifesto: Record<
+  Locale,
   {
-    title: "Build senza permessi",
-    description: "La casa diventa laboratorio. Spazi mobili, prototipi rapidi.",
-    accent: "Itera",
-  },
+    title: string;
+    description: string;
+    accent: string;
+  }[]
+> = {
+  it: [
+    {
+      title: "Build senza permessi",
+      description: "La casa diventa laboratorio. Spazi mobili, prototipi rapidi.",
+      accent: "Itera",
+    },
+    {
+      title: "Loop di apprendimento",
+      description: "Workshop improvvisati, mentorship tra pari, feedback immediati.",
+      accent: "Condividi",
+    },
+    {
+      title: "Energia tribale",
+      description: "Tecnologia, sport, cibo. Corpo e mente allineati.",
+      accent: "Stai sveglio",
+    },
+  ],
+  en: [
+    {
+      title: "Build without permissions",
+      description: "Home becomes lab. Mobile setups, rapid prototypes.",
+      accent: "Iterate",
+    },
+    {
+      title: "Learning loops",
+      description: "Pop-up workshops, peer mentorship, instant feedback.",
+      accent: "Share",
+    },
+    {
+      title: "Tribal energy",
+      description: "Tech, sport, food. Body and mind synced.",
+      accent: "Stay awake",
+    },
+  ],
+};
+
+const conceptCopy: Record<
+  Locale,
   {
-    title: "Loop di apprendimento",
-    description: "Workshop improvvisati, mentorship tra pari, feedback immediati.",
-    accent: "Condividi",
+    label: string;
+    heading: string;
+    body: string;
+    promiseLabel: string;
+    promiseText: string;
+  }
+> = {
+  it: {
+    label: "Manifesto",
+    heading: "Costruiamo per chi fa, non per chi guarda.",
+    body: "Ogni sabato cambia. Nessun builder resta solo. Le idee devono muoversi.",
+    promiseLabel: "Promessa",
+    promiseText: "Builder, sognatori, believer. Porta ciò che sai, prendi ciò che serve, lascia un impatto.",
   },
-  {
-    title: "Energia tribale",
-    description: "Tecnologia, sport, cibo. Corpo e mente allineati.",
-    accent: "Stai sveglio",
+  en: {
+    label: "Manifesto",
+    heading: "We build for doers, not spectators.",
+    body: "Every Saturday shifts. No builder stays solo. Ideas must move.",
+    promiseLabel: "Promise",
+    promiseText: "Builders, dreamers, believers. Bring what you know, take what you need, leave a dent.",
   },
-];
+};
 
 function ManifestoCard({
   title,
@@ -47,7 +100,9 @@ function ManifestoCard({
   );
 }
 
-export default function ConceptSection() {
+export default function ConceptSection({ locale }: { locale: Locale }) {
+  const copy = conceptCopy[locale];
+
   return (
     <section id="manifesto" className="relative min-h-screen overflow-hidden bg-[#050714] py-24 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,_rgba(114,90,249,0.15),_transparent_45%)]" />
@@ -61,13 +116,13 @@ export default function ConceptSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">Manifesto</p>
-          <h2 className="font-heading text-4xl text-white md:text-5xl">Costruiamo per chi fa, non per chi guarda.</h2>
-          <p className="text-lg text-slate-300">Ogni sabato cambia. Nessun builder resta solo. Le idee devono muoversi.</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">{copy.label}</p>
+          <h2 className="font-heading text-4xl text-white md:text-5xl">{copy.heading}</h2>
+          <p className="text-lg text-slate-300">{copy.body}</p>
         </motion.div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {manifesto.map((point, index) => (
+          {manifesto[locale].map((point, index) => (
             <ManifestoCard
               key={point.title}
               title={point.title}
@@ -85,10 +140,8 @@ export default function ConceptSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">Promessa</p>
-          <p className="mt-4 text-2xl text-white">
-            Builder, sognatori, believer. Porta ciò che sai, prendi ciò che serve, lascia un impatto.
-          </p>
+          <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">{copy.promiseLabel}</p>
+          <p className="mt-4 text-2xl text-white">{copy.promiseText}</p>
         </motion.div>
       </div>
     </section>

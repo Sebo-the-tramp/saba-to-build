@@ -1,16 +1,39 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import type { Locale } from "@/lib/i18n";
 
-const navItems = [
-  { label: "Manifesto", id: "manifesto" },
-  { label: "Programma", id: "orari" },
-  { label: "Esperienze", id: "attivita" },
-  { label: "Lanci", id: "eventi-passati" },
-  { label: "Contatti", id: "contatti" },
-];
+const navItems: Record<
+  Locale,
+  { label: string; id: string }[]
+> = {
+  it: [
+    { label: "Manifesto", id: "manifesto" },
+    { label: "Programma", id: "orari" },
+    { label: "Esperienze", id: "attivita" },
+    { label: "Lanci", id: "eventi-passati" },
+    { label: "Contatti", id: "contatti" },
+  ],
+  en: [
+    { label: "Manifesto", id: "manifesto" },
+    { label: "Schedule", id: "orari" },
+    { label: "Experiences", id: "attivita" },
+    { label: "Launches", id: "eventi-passati" },
+    { label: "Contact", id: "contatti" },
+  ],
+};
 
-export default function Header() {
+const ctaLabel: Record<Locale, string> = {
+  it: "Prenota un posto",
+  en: "Reserve a slot",
+};
+
+const mobileCta: Record<Locale, string> = {
+  it: "Join the Build",
+  en: "Join the Build",
+};
+
+export default function Header({ locale }: { locale: Locale }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -35,7 +58,7 @@ export default function Header() {
   };
 
   const baseClasses =
-    "fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/10";
+    "fixed top-0 left-0 w-full z-[120] transition-all duration-300 border-b border-white/10";
   const scrolledClasses =
     "bg-[#02030d]/95 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.55)] py-3";
   const topClasses = "bg-transparent py-6";
@@ -57,7 +80,7 @@ export default function Header() {
         </motion.a>
 
         <nav className="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-300">
-          {navItems.map((item) => (
+          {navItems[locale].map((item) => (
             <NavLink key={item.id} label={item.label} id={item.id} onClick={() => scrollToSection(item.id)} />
           ))}
         </nav>
@@ -67,8 +90,16 @@ export default function Header() {
             className="bg-primary text-white font-heading tracking-widest uppercase text-xs"
             onClick={() => scrollToSection("eventi-passati")}
           >
-            Prenota un posto
+            {ctaLabel[locale]}
           </Button>
+          <button
+            className="rounded-full border border-white/20 px-3 py-1 text-xs font-heading tracking-[0.3em] uppercase text-white transition-colors hover:border-primary hover:text-primary"
+            onClick={() => {
+              window.location.hash = locale === "it" ? "/en" : "/";
+            }}
+          >
+            {locale === "it" ? "EN" : "IT"}
+          </button>
         </div>
 
         <button
@@ -87,7 +118,7 @@ export default function Header() {
           className="lg:hidden border-t border-white/10 bg-[#02030d]/95 backdrop-blur-xl"
         >
           <div className="mx-auto flex w-full flex-col space-y-4 px-6 py-6 sm:px-10 lg:px-16">
-            {navItems.map((item) => (
+            {navItems[locale].map((item) => (
               <NavLink
                 key={item.id}
                 label={item.label}
@@ -100,8 +131,17 @@ export default function Header() {
               className="w-full bg-primary text-white font-heading tracking-[0.25em] uppercase"
               onClick={() => scrollToSection("eventi-passati")}
             >
-              Join the Build
+              {mobileCta[locale]}
             </Button>
+            <button
+              className="rounded-full border border-white/20 px-4 py-2 text-xs font-heading tracking-[0.35em] uppercase text-white"
+              onClick={() => {
+                window.location.hash = locale === "it" ? "/en" : "/";
+                setIsMenuOpen(false);
+              }}
+            >
+              {locale === "it" ? "Switch to English" : "Torna in Italiano"}
+            </button>
           </div>
         </motion.div>
       )}

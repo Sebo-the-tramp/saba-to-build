@@ -1,13 +1,63 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import type { Locale } from "@/lib/i18n";
 
-const stats = [
-  { label: "Builders attivi", value: "42+" },
-  { label: "Ore hardcore", value: "10h" },
-  { label: "Prototipi nati", value: "21" },
-];
+const stats: Record<Locale, { label: string; value: string }[]> = {
+  it: [
+    { label: "Builders attivi", value: "42+" },
+    { label: "Ore hardcore", value: "10h" },
+    { label: "Prototipi nati", value: "21" },
+  ],
+  en: [
+    { label: "Active builders", value: "42+" },
+    { label: "Hardcore hours", value: "10h" },
+    { label: "Prototypes born", value: "21" },
+  ],
+};
 
-export default function HeroSection() {
+const heroCopy: Record<
+  Locale,
+  {
+    season: string;
+    location: string;
+    title: string;
+    accent: string;
+    subtitle: string;
+    primaryCta: string;
+    secondaryCta: string;
+    checklist: string[];
+    ruleLabel: string;
+    ruleBody: string;
+  }
+> = {
+  it: {
+    season: "Stagione 2025",
+    location: "Val di Fiemme",
+    title: "Per chi costruisce.",
+    accent: "Per i sognatori.",
+    subtitle: "Persone, computer e palestra.",
+    primaryCta: "I want to build",
+    secondaryCta: "Leggi il manifesto",
+    checklist: ["Blocchi focus", "Talk lampo", "Hardware + VR + sport"],
+    ruleLabel: "Unica regola",
+    ruleBody: "Arriva con un problema. Esci con un pezzo di soluzione.",
+  },
+  en: {
+    season: "Season 2025",
+    location: "Val di Fiemme",
+    title: "For the ones who build.",
+    accent: "For the dreamers.",
+    subtitle: "People, computers, and training.",
+    primaryCta: "I want to build",
+    secondaryCta: "Read the manifesto",
+    checklist: ["Focus sprints", "Lightning talks", "Hardware + VR + sport"],
+    ruleLabel: "Only rule",
+    ruleBody: "Walk in with a problem. Walk out with part of the solution.",
+  },
+};
+
+export default function HeroSection({ locale }: { locale: Locale }) {
+  const copy = heroCopy[locale];
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (!element) return;
@@ -33,17 +83,17 @@ export default function HeroSection() {
             className="space-y-8"
           >
             <div className="inline-flex items-center gap-3 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.4em] text-slate-100/70">
-              Stagione 2025
+              {copy.season}
               <span className="h-1 w-1 rounded-full bg-primary" />
-              Val di Fiemme
+              {copy.location}
             </div>
 
             <div>
               <h1 className="font-heading text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                Per chi costruisce.
-                <span className="block text-primary">Per i sognatori.</span>
+                {copy.title}
+                <span className="block text-primary">{copy.accent}</span>
               </h1>
-              <p className="mt-6 text-lg text-slate-300 md:text-xl">Persone, computer e palestra.</p>
+              <p className="mt-6 text-lg text-slate-300 md:text-xl">{copy.subtitle}</p>
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -51,19 +101,19 @@ export default function HeroSection() {
                 className="h-12 flex-1 bg-primary text-white font-heading tracking-[0.35em] uppercase"
                 onClick={() => scrollToSection("eventi-passati")}
               >
-                I want to build
+                {copy.primaryCta}
               </Button>
               <Button
                 variant="outline"
                 className="h-12 flex-1 border-white/30 text-white font-heading tracking-[0.35em] uppercase hover:bg-white/10"
                 onClick={() => scrollToSection("manifesto")}
               >
-                Leggi il manifesto
+                {copy.secondaryCta}
               </Button>
             </div>
 
             <div className="grid gap-6 pt-8 sm:grid-cols-3">
-              {stats.map((stat) => (
+              {stats[locale].map((stat) => (
                 <div key={stat.label} className="border-l border-white/20 pl-6">
                   <p className="font-heading text-3xl">{stat.value}</p>
                   <p className="text-xs uppercase tracking-[0.35em] text-slate-400">{stat.label}</p>
@@ -80,12 +130,18 @@ export default function HeroSection() {
           >
             <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/20 to-pink-500/20 blur-3xl" />
             <div className="relative rounded-[2.5rem] border border-white/15 bg-white/[0.04] p-8 shadow-[0_0_60px_rgba(0,0,0,0.45)]">
-              <p className="text-xs uppercase tracking-[0.35em] text-emerald-200">Next build cycle</p>
-              <p className="mt-4 font-heading text-4xl text-white">29 Novembre · 8:00 → 18:00</p>
-              <p className="mt-2 text-sm text-slate-300">Molina di Fiemme · Via Bolzano 20</p>
+              <p className="text-xs uppercase tracking-[0.35em] text-emerald-200">
+                {locale === "it" ? "Prossimo ciclo" : "Next build cycle"}
+              </p>
+              <p className="mt-4 font-heading text-4xl text-white">
+                {locale === "it" ? "29 Novembre · 8:00 → 18:00" : "29 November · 8:00 → 18:00"}
+              </p>
+              <p className="mt-2 text-sm text-slate-300">
+                {locale === "it" ? "Molina di Fiemme · Via Bolzano 20" : "Molina di Fiemme · Via Bolzano 20"}
+              </p>
 
               <div className="mt-8 space-y-4 text-sm text-slate-300">
-                {["Blocchi focus", "Talk lampo", "Hardware + VR + sport"].map((item) => (
+                {copy.checklist.map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full border border-primary/50 text-primary">
                       <i className="bx bx-check text-base" />
@@ -96,8 +152,8 @@ export default function HeroSection() {
               </div>
 
               <div className="mt-10 rounded-2xl border border-white/10 bg-primary/10 p-6">
-                <p className="font-heading text-base uppercase tracking-[0.35em] text-primary">Unica regola</p>
-                <p className="mt-2 text-lg text-white">Arriva con un problema. Esci con un pezzo di soluzione.</p>
+                <p className="font-heading text-base uppercase tracking-[0.35em] text-primary">{copy.ruleLabel}</p>
+                <p className="mt-2 text-lg text-white">{copy.ruleBody}</p>
               </div>
             </div>
           </motion.div>

@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import HomeEn from "@/pages/HomeEn";
 import EventiArchivio from "@/pages/EventiArchivio";
 import EventDetails from "@/pages/EventDetails";
 import { useState, useEffect } from "react";
@@ -38,6 +39,7 @@ function AppRouter() {
     <Router hook={useHashLocation}>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/en" component={HomeEn} />
         <Route path="/archivio-eventi" component={EventiArchivio} />
         <Route path="/evento/:id" component={EventDetails} />
         <Route component={NotFound} />

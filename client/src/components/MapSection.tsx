@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import type { Locale } from "@/lib/i18n";
 
 const icon = L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
@@ -13,7 +14,33 @@ const icon = L.icon({
   shadowSize: [41, 41],
 });
 
-export default function MapSection() {
+const mapCopy: Record<
+  Locale,
+  {
+    label: string;
+    heading: string;
+    body: string;
+    howToLabel: string;
+    howTo: string;
+  }
+> = {
+  it: {
+    label: "Coordinate",
+    heading: "La casa dei builder",
+    body: "Via Bolzano 20 \nMolina di Fiemme (TN)",
+    howToLabel: "Come arrivare",
+    howTo: "Parcheggia vicino al torrente, segui i led rossi. È impossibile sbagliare.",
+  },
+  en: {
+    label: "Coordinates",
+    heading: "The builders' house",
+    body: "Via Bolzano 20 \nMolina di Fiemme (TN)",
+    howToLabel: "How to reach",
+    howTo: "Park near the stream, follow your heart. You can’t miss it.",
+  },
+};
+
+export default function MapSection({ locale }: { locale: Locale }) {
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
@@ -50,15 +77,14 @@ export default function MapSection() {
         >
           <div className="grid gap-0 md:grid-cols-[320px,1fr]">
             <div className="space-y-4 border-b border-white/5 p-8 md:border-b-0 md:border-r">
-              <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Coordinate</p>
-              <h3 className="font-heading text-3xl">La casa dei builder</h3>
-              <p className="text-slate-300">
-                Via Bolzano 20 <br />
-                Molina di Fiemme (TN)
-              </p>
+              <p className="text-xs uppercase tracking-[0.35em] text-slate-500">{mapCopy[locale].label}</p>
+              <h3 className="font-heading text-3xl">{mapCopy[locale].heading}</h3>
+              <p className="text-slate-300 whitespace-pre-line">{mapCopy[locale].body}</p>
               <div className="rounded-2xl border border-white/10 bg-primary/10 p-4 text-sm text-white">
-                <p className="font-heading text-xs uppercase tracking-[0.35em] text-primary">How to reach</p>
-                <p className="mt-2">Parcheggia vicino al torrente, segui i led rossi. È impossibile sbagliare.</p>
+                <p className="font-heading text-xs uppercase tracking-[0.35em] text-primary">
+                  {mapCopy[locale].howToLabel}
+                </p>
+                <p className="mt-2">{mapCopy[locale].howTo}</p>
               </div>
             </div>
             <div className="relative h-[420px]">
