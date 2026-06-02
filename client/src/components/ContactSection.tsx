@@ -1,133 +1,55 @@
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import type { Locale } from "@/lib/i18n";
 
-interface ContactInfoItemProps {
-  icon: string;
-  title: string;
-  content: string;
-  delay: number;
-}
+const instagramUrl = "https://www.instagram.com/saba_to_build/";
 
-function ContactInfoItem({ icon, title, content, delay }: ContactInfoItemProps) {
+const contactCopy: Record<
+  Locale,
+  {
+    label: string;
+    heading: string;
+    body: string;
+    cta: string;
+  }
+> = {
+  it: {
+    label: "Contatti",
+    heading: "Prossimo incontro?",
+    body: "Controlla Instagram o mandaci un DM. Non serve invito, non serve prenotare: vieni e basta.",
+    cta: "DM su Instagram",
+  },
+  en: {
+    label: "Contact",
+    heading: "Next meetup?",
+    body: "Check Instagram or send us a DM. No invite, no reservation: just come.",
+    cta: "DM on Instagram",
+  },
+};
+
+export default function ContactSection({ locale }: { locale: Locale }) {
+  const copy = contactCopy[locale];
+
   return (
-    <motion.div 
-      className="flex items-start"
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay }}
-    >
-      <div className="flex-shrink-0 mt-1">
-        <div className="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
-          <i className={`bx ${icon} text-primary`}></i>
-        </div>
-      </div>
-      <div className="ml-4">
-        <h4 className="text-lg font-heading font-semibold">{title}</h4>
-        <p className="text-neutral mt-1">{content}</p>
-      </div>
-    </motion.div>
-  );
-}
-
-interface SocialLinkProps {
-  icon: string;
-  href: string;
-  delay: number;
-}
-
-function SocialLink({ icon, href, delay }: SocialLinkProps) {
-  return (
-    <motion.a 
-      href={href}
-      className="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay }}
-    >
-      <i className={`bx ${icon}`}></i>
-    </motion.a>
-  );
-}
-
-export default function ContactSection() {
-  return (
-    <section id="contatti" className="py-16 md:py-24 bg-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            className="max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Contattaci</h2>
-            <p className="text-lg text-neutral mb-12 text-center">
-              Hai domande sul nostro "Saba-to-build"? Vuoi partecipare o hai suggerimenti da condividere? Contattaci!
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              className="bg-white rounded-lg shadow p-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-                <i className="bx bx-map text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3">Indirizzo</h3>
-              <p className="text-neutral">Via Bolzano 20<br />38030 Molina di Fiemme</p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white rounded-lg shadow p-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-                <i className="bx bx-envelope text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3">Email</h3>
-              <p className="text-neutral">sebastian.cavada.dev@gmail.com</p>
-            </motion.div>
-            
-            <motion.div
-              className="bg-white rounded-lg shadow p-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-                <i className="bx bx-phone text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3">Telefono</h3>
-              <p className="text-neutral">+39 3703115683</p>
-            </motion.div>
-          </div>
-          
-          <motion.div 
-            className="mt-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h3 className="text-xl font-heading font-semibold mb-4">Seguici sui Social</h3>
-            <div className="flex justify-center space-x-4">
-              <SocialLink icon="bxl-instagram text-white" href="#" delay={0.1} />
-              <SocialLink icon="bxl-facebook text-white" href="#" delay={0.2} />
-              <SocialLink icon="bxl-whatsapp text-white" href="#" delay={0.3} />
-              <SocialLink icon="bxl-telegram text-white" href="#" delay={0.4} />
-            </div>
-          </motion.div>
-        </div>
+    <section id="contatti" className="flex items-center bg-[#020207] py-12 text-white">
+      <div className="mx-auto w-full px-4 text-center sm:px-10 lg:px-16">
+        <motion.div
+          className="mx-auto max-w-3xl"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-xs uppercase tracking-[0.35em] text-slate-500">{copy.label}</p>
+          <h2 className="mt-5 font-heading text-4xl md:text-5xl">{copy.heading}</h2>
+          <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">{copy.body}</p>
+          <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex">
+            <Button className="h-12 bg-primary px-7 text-xs text-white font-heading tracking-[0.18em] uppercase sm:text-sm">
+              <i className="bx bxl-instagram text-xl" />
+              {copy.cta}
+            </Button>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

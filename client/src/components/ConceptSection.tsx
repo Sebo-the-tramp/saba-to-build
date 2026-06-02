@@ -1,69 +1,148 @@
 import { motion } from "framer-motion";
+import type { Locale } from "@/lib/i18n";
 
-interface ConceptCardProps {
-  icon: string;
+const manifesto: Record<
+  Locale,
+  {
+    title: string;
+    description: string;
+    accent: string;
+  }[]
+> = {
+  it: [
+    {
+      title: "Build senza permessi",
+      description: "La casa diventa laboratorio. Spazi mobili, prototipi rapidi.",
+      accent: "Itera",
+    },
+    {
+      title: "Loop di apprendimento",
+      description: "Workshop improvvisati, mentorship tra pari, feedback immediati.",
+      accent: "Condividi",
+    },
+    {
+      title: "Energia totale",
+      description: "Tecnologia, sport, cibo. Corpo e mente allineati.",
+      accent: "Stai sveglio",
+    },
+  ],
+  en: [
+    {
+      title: "Build without permissions",
+      description: "Home becomes lab. Mobile setups, rapid prototypes.",
+      accent: "Iterate",
+    },
+    {
+      title: "Learning loops",
+      description: "Pop-up workshops, peer mentorship, instant feedback.",
+      accent: "Share",
+    },
+    {
+      title: "Tribal energy",
+      description: "Tech, sport, food. Body and mind synced.",
+      accent: "Stay awake",
+    },
+  ],
+};
+
+const conceptCopy: Record<
+  Locale,
+  {
+    label: string;
+    heading: string;
+    body: string;
+    promiseLabel: string;
+    promiseText: string;
+  }
+> = {
+  it: {
+    label: "Manifesto",
+    heading: "Costruiamo per chi fa, non per chi guarda.",
+    body: "Ogni sabato cambia. Nessun builder resta solo. Le idee devono muoversi.",
+    promiseLabel: "Promessa",
+    promiseText: "Builder, sognatori, believer. Porta ciò che sai, prendi ciò che serve, lascia un impatto.",
+  },
+  en: {
+    label: "Manifesto",
+    heading: "We build for doers, not spectators.",
+    body: "Every Saturday shifts. No builder stays solo. Ideas must move.",
+    promiseLabel: "Promise",
+    promiseText: "Builders, dreamers, believers. Bring what you know, take what you need, leave a dent.",
+  },
+};
+
+function ManifestoCard({
+  title,
+  description,
+  accent,
+  delay,
+}: {
   title: string;
   description: string;
+  accent: string;
   delay: number;
-}
-
-function ConceptCard({ icon, title, description, delay }: ConceptCardProps) {
+}) {
   return (
-    <motion.div 
-      className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all text-center"
-      initial={{ opacity: 0, y: 20 }}
+    <motion.div
+      className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8"
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.4, delay }}
     >
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary bg-opacity-10 text-white mb-6">
-        <i className={`bx ${icon} text-3xl`}></i>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.06] to-transparent opacity-70" />
+      <div className="relative space-y-3">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary">{accent}</p>
+        <h3 className="text-2xl font-heading text-white">{title}</h3>
+        <p className="text-slate-300">{description}</p>
       </div>
-      <h3 className="text-xl font-heading font-bold mb-4">{title}</h3>
-      <p className="text-neutral">{description}</p>
     </motion.div>
   );
 }
 
-export default function ConceptSection() {
+export default function ConceptSection({ locale }: { locale: Locale }) {
+  const copy = conceptCopy[locale];
+
   return (
-    <section id="concetto" className="py-16 md:py-24 bg-light">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+    <section id="manifesto" className="relative overflow-hidden bg-[#0b0806] py-16 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,105,66,0.16),_transparent_42%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#01030a] to-transparent" />
+
+      <div className="relative mx-auto w-full px-4 sm:px-10 lg:px-16">
+        <motion.div
+          className="max-w-3xl space-y-6"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Il Concetto</h2>
-          <p className="text-lg text-neutral">
-            "Saba-to-build" nasce dall'idea di trasformare il sabato in un giorno dedicato alla creatività, alla condivisione e alla crescita personale e collettiva. Ispirato dalle hacker houses della Silicon Valley e da creator come levelsio e altri innovatori su Twitter, vogliamo portare questi concetti innovativi nella nostra Val di Fiemme, creando uno spazio dove la comunità possa crescere insieme.
-          </p>
+          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">{copy.label}</p>
+          <h2 className="font-heading text-4xl text-white md:text-5xl">{copy.heading}</h2>
+          <p className="text-lg text-slate-300">{copy.body}</p>
         </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <ConceptCard 
-            icon="bx-bulb" 
-            title="Creatività" 
-            description="Uno spazio dove le idee prendono forma, dove puoi concentrarti sui tuoi progetti in un ambiente stimolante."
-            delay={0.1}
-          />
-          
-          <ConceptCard 
-            icon="bx-chat" 
-            title="Condivisione" 
-            description="Scambia idee, conosci nuove persone e collabora a progetti comuni in un ambiente accogliente e informale."
-            delay={0.2}
-          />
-          
-          <ConceptCard 
-            icon="bx-group" 
-            title="Comunità" 
-            description="Creiamo insieme un ambiente dove ci si sente parte di qualcosa di più grande, dove il supporto reciproco è fondamentale."
-            delay={0.3}
-          />
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {manifesto[locale].map((point, index) => (
+            <ManifestoCard
+              key={point.title}
+              title={point.title}
+              description={point.description}
+              accent={point.accent}
+              delay={0.1 * (index + 1)}
+            />
+          ))}
         </div>
+
+        <motion.div
+          className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <p className="font-heading text-sm uppercase tracking-[0.35em] text-primary">{copy.promiseLabel}</p>
+          <p className="mt-4 text-2xl text-white">{copy.promiseText}</p>
+        </motion.div>
       </div>
     </section>
   );
