@@ -13,28 +13,28 @@ const footerCopy: Record<
   }
 > = {
   it: {
-    introLabel: "Saba-to-build",
+    introLabel: "SABA-TO-BUILD",
     introBody: "Per chi non smette di inseguire l'impossibile. Ci vediamo ogni due settimane.",
     coordLabel: "Coordinate",
     coordBody: "Via Bolzano 20 · 38030 Molina di Fiemme",
-    coordTime: "sabato 8:00 — 18:00 · ogni due settimane",
+    coordTime: "sabato 14:00 → 22:00 · ogni due settimane",
     rights: "Tutti i diritti riservati · costruiamo con cura.",
   },
   en: {
-    introLabel: "Saba-to-build",
+    introLabel: "SABA-TO-BUILD",
     introBody: "For anyone chasing the impossible. See you every other Saturday.",
     coordLabel: "Coordinates",
     coordBody: "Via Bolzano 20 · 38030 Molina di Fiemme",
-    coordTime: "Saturday 8:00 — 18:00 · every other week",
+    coordTime: "Saturday 14:00 → 22:00 · every other week",
     rights: "All rights reserved · we build with care.",
   },
 };
 
-export default function Footer({ locale }: { locale: Locale }) {
+export default function Footer({ locale = "it" }: { locale?: Locale }) {
   const copy = footerCopy[locale];
 
   return (
-    <footer className="border-t border-white/10 bg-[#010103] py-12 text-slate-300">
+    <footer className="border-t border-white/10 bg-[#010103] py-8 text-slate-300">
       <div className="mx-auto w-full px-4 sm:px-10 lg:px-16">
         <div className="grid gap-8 md:grid-cols-3">
           <motion.div
@@ -66,6 +66,14 @@ export default function Footer({ locale }: { locale: Locale }) {
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <p className="text-sm uppercase tracking-[0.35em] text-slate-500">© {new Date().getFullYear()}</p>
+            <a
+              href="https://cavadalabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 block font-heading text-sm uppercase tracking-[0.3em] text-primary transition-colors hover:text-white"
+            >
+              A project by CAVADALABS
+            </a>
             <p className="mt-3">{copy.rights}</p>
           </motion.div>
         </div>

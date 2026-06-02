@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/lib/i18n";
@@ -10,41 +10,29 @@ const navItems: Record<
   it: [
     { label: "Manifesto", id: "manifesto" },
     { label: "Programma", id: "orari" },
-    { label: "Esperienze", id: "attivita" },
-    { label: "Lanci", id: "eventi-passati" },
+    { label: "Incontri", id: "eventi-passati" },
     { label: "Contatti", id: "contatti" },
   ],
   en: [
     { label: "Manifesto", id: "manifesto" },
     { label: "Schedule", id: "orari" },
-    { label: "Experiences", id: "attivita" },
-    { label: "Launches", id: "eventi-passati" },
+    { label: "Meetups", id: "eventi-passati" },
     { label: "Contact", id: "contatti" },
   ],
 };
 
 const ctaLabel: Record<Locale, string> = {
-  it: "Prenota un posto",
-  en: "Reserve a slot",
+  it: "Instagram",
+  en: "Instagram",
 };
 
 const mobileCta: Record<Locale, string> = {
-  it: "Join the Build",
-  en: "Join the Build",
+  it: "DM Instagram",
+  en: "DM Instagram",
 };
 
-export default function Header({ locale }: { locale: Locale }) {
+export default function Header({ locale = "it" }: { locale?: Locale }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -57,14 +45,11 @@ export default function Header({ locale }: { locale: Locale }) {
     setIsMenuOpen(false);
   };
 
-  const baseClasses =
-    "fixed top-0 left-0 w-full z-[120] transition-all duration-300 border-b border-white/10";
-  const scrolledClasses =
-    "bg-[#02030d]/95 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.55)] py-3";
-  const topClasses = "bg-transparent py-6";
+  const headerClasses =
+    "fixed top-0 left-0 w-full z-[120] border-b border-white/10 bg-[#02030d]/90 py-4 backdrop-blur-xl";
 
   return (
-    <header className={`${baseClasses} ${scrollY > 20 ? scrolledClasses : topClasses}`}>
+    <header className={headerClasses}>
       <div className="mx-auto flex w-full items-center justify-between px-4 sm:px-10 lg:px-16">
         <motion.a
           href="#hero"
@@ -76,19 +61,23 @@ export default function Header({ locale }: { locale: Locale }) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          SABA TO BUILD
+          SABA-TO-BUILD
         </motion.a>
 
         <nav className="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-300">
           {navItems[locale].map((item) => (
-            <NavLink key={item.id} label={item.label} id={item.id} onClick={() => scrollToSection(item.id)} />
+            <NavLink
+              key={item.id}
+              label={item.label}
+              onClick={() => scrollToSection(item.id)}
+            />
           ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <Button
             className="bg-primary text-white font-heading tracking-widest uppercase text-xs"
-            onClick={() => scrollToSection("eventi-passati")}
+            onClick={() => scrollToSection("contatti")}
           >
             {ctaLabel[locale]}
           </Button>
@@ -122,14 +111,13 @@ export default function Header({ locale }: { locale: Locale }) {
               <NavLink
                 key={item.id}
                 label={item.label}
-                id={item.id}
                 mobile
                 onClick={() => scrollToSection(item.id)}
               />
             ))}
             <Button
               className="w-full bg-primary text-white font-heading tracking-[0.25em] uppercase"
-              onClick={() => scrollToSection("eventi-passati")}
+              onClick={() => scrollToSection("contatti")}
             >
               {mobileCta[locale]}
             </Button>
@@ -151,12 +139,11 @@ export default function Header({ locale }: { locale: Locale }) {
 
 interface NavLinkProps {
   label: string;
-  id: string;
   onClick: () => void;
   mobile?: boolean;
 }
 
-function NavLink({ label, id, onClick, mobile = false }: NavLinkProps) {
+function NavLink({ label, onClick, mobile = false }: NavLinkProps) {
   return (
     <button
       type="button"

@@ -48,7 +48,7 @@ export default function GallerySection({ locale }: { locale: Locale }) {
   const copy = galleryCopy[locale];
 
   return (
-    <section id="galleria" className="bg-[#03040c] py-24 text-white min-h-screen">
+    <section id="galleria" className="bg-[#03040c] py-16 text-white">
       <div className="mx-auto w-full px-4 sm:px-10 lg:px-16">
         <motion.div
           className="max-w-3xl"
@@ -62,7 +62,7 @@ export default function GallerySection({ locale }: { locale: Locale }) {
           <p className="mt-4 text-lg text-slate-300">{copy.body}</p>
         </motion.div>
 
-        <div className="mt-12 grid auto-rows-[180px] grid-cols-2 gap-4 sm:auto-rows-[220px] md:grid-cols-4">
+        <div className="mt-10 grid auto-rows-[160px] grid-cols-2 gap-4 sm:auto-rows-[200px] md:grid-cols-4">
           {galleryImages[locale].map((image, index) => (
             <motion.div
               key={image.alt}

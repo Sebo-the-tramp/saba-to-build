@@ -17,6 +17,14 @@ type Launch = {
 const launches: Record<Locale, Launch[]> = {
   it: [
     {
+      id: "restart-2026-06-13",
+      date: "13 Giugno 2026",
+      title: "Restart 2026",
+      description: "Ripartiamo quest'anno: persone, idee, sport. Dalle 14 alle 22, vieni quando preferisci.",
+      tags: ["restart", "incontro"],
+      imageUrl: mediaAssets.community,
+    },
+    {
       id: "kick-off-2025-06-07",
       date: "7 Giugno 2025",
       title: "Kick-off manifesto",
@@ -42,6 +50,14 @@ const launches: Record<Locale, Launch[]> = {
     },
   ],
   en: [
+    {
+      id: "restart-2026-06-13",
+      date: "13 June 2026",
+      title: "Restart 2026",
+      description: "We restart this year: people, ideas, sport. From 14:00 to 22:00, come when you prefer.",
+      tags: ["restart", "meetup"],
+      imageUrl: mediaAssets.community,
+    },
     {
       id: "kick-off-2025-06-07",
       date: "7 June 2025",
@@ -81,19 +97,19 @@ const launchesCopy: Record<
   }
 > = {
   it: {
-    label: "Next launches",
-    heading: "I prossimi capitoli.",
-    body: "Ogni data cambia ritmo: hack, mastermind, sport.",
+    label: "Incontri",
+    heading: "Si riparte il 13 giugno.",
+    body: "Persone, idee, sport. Vieni quando preferisci.",
     archiveLabel: "Archivio",
-    archiveBody: "Vuoi vedere cosa abbiamo già costruito? Scopri tutte le edizioni e i progetti nati.",
+    archiveBody: "Il log degli incontri passati.",
     archiveCta: "Vedi l'archivio",
   },
   en: {
-    label: "Next launches",
-    heading: "Next chapters.",
-    body: "Each date shifts the rhythm: hacks, mastermind, sport.",
+    label: "Meetups",
+    heading: "We restart on 13 June.",
+    body: "People, ideas, sport. Come when you prefer.",
     archiveLabel: "Archive",
-    archiveBody: "Want to see what we already shipped? Browse every edition and the projects born there.",
+    archiveBody: "The log of past meetups.",
     archiveCta: "Open the archive",
   },
 };
@@ -148,9 +164,10 @@ function LaunchCard({
 
 export default function PastEventsSection({ locale }: { locale: Locale }) {
   const copy = launchesCopy[locale];
+  const previewLaunches = launches[locale].slice(0, 3);
 
   return (
-    <section id="eventi-passati" className="bg-[#04040e] py-24 text-white min-h-screen">
+    <section id="eventi-passati" className="bg-[#04040e] py-16 text-white">
       <div className="mx-auto w-full px-4 sm:px-10 lg:px-16">
         <motion.div
           className="max-w-3xl"
@@ -164,14 +181,14 @@ export default function PastEventsSection({ locale }: { locale: Locale }) {
           <p className="mt-4 text-lg text-slate-300">{copy.body}</p>
         </motion.div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {launches[locale].map((launch, index) => (
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {previewLaunches.map((launch, index) => (
             <LaunchCard key={launch.id} {...launch} index={index} />
           ))}
         </div>
 
         <motion.div
-          className="mt-12 flex flex-col items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.02] px-8 py-10 text-center text-white md:flex-row md:text-left"
+          className="mt-10 flex flex-col items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-8 text-center text-white md:flex-row md:text-left"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

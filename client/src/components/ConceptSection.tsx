@@ -21,7 +21,7 @@ const manifesto: Record<
       accent: "Condividi",
     },
     {
-      title: "Energia tribale",
+      title: "Energia totale",
       description: "Tecnologia, sport, cibo. Corpo e mente allineati.",
       accent: "Stai sveglio",
     },
@@ -104,9 +104,9 @@ export default function ConceptSection({ locale }: { locale: Locale }) {
   const copy = conceptCopy[locale];
 
   return (
-    <section id="manifesto" className="relative min-h-screen overflow-hidden bg-[#050714] py-24 text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,_rgba(114,90,249,0.15),_transparent_45%)]" />
-      <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-l from-primary/10 to-transparent lg:block" />
+    <section id="manifesto" className="relative overflow-hidden bg-[#0b0806] py-16 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(255,105,66,0.16),_transparent_42%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#01030a] to-transparent" />
 
       <div className="relative mx-auto w-full px-4 sm:px-10 lg:px-16">
         <motion.div
@@ -121,7 +121,7 @@ export default function ConceptSection({ locale }: { locale: Locale }) {
           <p className="text-lg text-slate-300">{copy.body}</p>
         </motion.div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {manifesto[locale].map((point, index) => (
             <ManifestoCard
               key={point.title}
@@ -134,7 +134,7 @@ export default function ConceptSection({ locale }: { locale: Locale }) {
         </div>
 
         <motion.div
-          className="mt-16 rounded-3xl border border-white/10 bg-white/[0.03] p-10"
+          className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
