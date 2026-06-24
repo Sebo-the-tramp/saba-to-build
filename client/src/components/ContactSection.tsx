@@ -16,13 +16,13 @@ const contactCopy: Record<
   it: {
     label: "Contatti",
     heading: "Prossimo incontro?",
-    body: "Controlla Instagram o mandaci un DM. Non serve invito, non serve prenotare: vieni e basta.",
+    body: "Scrivici su Instagram. Ti diciamo cosa sta prendendo forma e dove entrare nel ritmo.",
     cta: "DM su Instagram",
   },
   en: {
     label: "Contact",
     heading: "Next meetup?",
-    body: "Check Instagram or send us a DM. No invite, no reservation: just come.",
+    body: "Message us on Instagram. We'll share what is taking shape and where to enter the rhythm.",
     cta: "DM on Instagram",
   },
 };

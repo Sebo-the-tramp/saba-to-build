@@ -19,13 +19,13 @@ const experiences: Record<
     },
     {
       title: "Knowledge Drops",
-      description: "Skill swap continuo. Pochi slide, molta pratica.",
-      highlights: ["Mentorship lampo", "Feedback diretto", "Zero palco"],
+      description: "Skill swap continuo. Meno slide, piu pratica.",
+      highlights: ["Mentorship lampo", "Feedback chiaro", "Zero palco"],
       accent: "Learning",
     },
     {
       title: "Movement & Reset",
-      description: "BirkenGym, bosco, respiro. Corpo acceso, mente lucida.",
+      description: "BirkenGym, bosco, respiro. Corpo presente, mente lucida.",
       highlights: ["Allenamento breve", "Reset mentale", "Energia sostenibile"],
       accent: "Energy",
     },
@@ -45,13 +45,13 @@ const experiences: Record<
     },
     {
       title: "Knowledge Drops",
-      description: "Constant skill swaps. Few slides, lots of practice.",
-      highlights: ["Flash mentorship", "Direct feedback", "Zero stage"],
+      description: "Constant skill swaps. Fewer slides, more practice.",
+      highlights: ["Flash mentorship", "Clear feedback", "Zero stage"],
       accent: "Learning",
     },
     {
       title: "Movement & Reset",
-      description: "BirkenGym, woods, breathwork. Body on, mind clear.",
+      description: "BirkenGym, woods, breathwork. Body present, mind clear.",
       highlights: ["Short training", "Mental reset", "Sustainable energy"],
       accent: "Energy",
     },
@@ -77,16 +77,16 @@ const activitiesCopy: Record<
   it: {
     label: "Esperienze",
     heading: "Ogni sabato è un loop completo.",
-    body: "Focus, coaching, movimento, condivisione. Scegli il ritmo e attacca.",
+    body: "Focus, coaching, movimento, condivisione. Scegli il ritmo e costruisci con intenzione.",
     badge: "Bold builders",
-    closing: "Porta strumento e curiosità. I moduli nascono da chi partecipa. Nessuno aspetta.",
+    closing: "Porta strumento e curiosita. I moduli nascono da chi partecipa. Il pomeriggio prende forma insieme.",
   },
   en: {
     label: "Experiences",
     heading: "Every Saturday is a full loop.",
-    body: "Focus, coaching, movement, sharing. Choose the pace and go.",
+    body: "Focus, coaching, movement, sharing. Choose the pace and build with intention.",
     badge: "Bold builders",
-    closing: "Bring your gear and curiosity. Modules spawn from whoever shows up. Nobody waits.",
+    closing: "Bring your gear and curiosity. The modules come from the people in the room. The afternoon takes shape together.",
   },
 };
 

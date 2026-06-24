@@ -6,27 +6,27 @@ const scheduleItems: Record<
   { time: string; title: string; description: string }[]
 > = {
   it: [
-    { time: "14:00", title: "Arriva quando vuoi", description: "Porta un'idea, un progetto o anche solo curiosita." },
-    { time: "16:00", title: "Build + sport", description: "Si lavora, ci si confronta, ci si muove un po'." },
-    { time: "18:00", title: "Drinks", description: "Ci fermiamo, beviamo qualcosa e parliamo senza scaletta." },
+    { time: "14:00", title: "Entra nel ritmo", description: "Porta un'idea. Trova spazio, persone e attenzione." },
+    { time: "16:00", title: "Build + movimento", description: "Costruisci, confrontati, rimetti energia nel corpo." },
+    { time: "18:00", title: "Reset & stories", description: "Qualcosa da bere, storie brevi, decisioni piu chiare." },
   ],
   en: [
-    { time: "14:00", title: "Come when you prefer", description: "Bring an idea, a project, or just curiosity." },
-    { time: "16:00", title: "Build + sport", description: "Work, compare notes, move a little." },
-    { time: "18:00", title: "Drinks", description: "We pause, have something to drink, and talk without a script." },
+    { time: "14:00", title: "Find the rhythm", description: "Bring an idea. Find space, people, and attention." },
+    { time: "16:00", title: "Build + movement", description: "Build, compare notes, put energy back in the body." },
+    { time: "18:00", title: "Reset & stories", description: "Something to drink, short stories, clearer decisions." },
   ],
 };
 
 const principles: Record<Locale, string[]> = {
   it: [
-    "Vieni quando preferisci.",
-    "Non serve invito.",
-    "Se hai dubbi, scrivici su Instagram.",
+    "Arriva quando senti che e il momento.",
+    "Porta un progetto, una domanda o energia.",
+    "Per dettagli, scrivici su Instagram.",
   ],
   en: [
-    "Come whenever you prefer.",
-    "No invitation needed.",
-    "If you have questions, DM us on Instagram.",
+    "Arrive when the timing feels right.",
+    "Bring a project, a question, or energy.",
+    "For details, message us on Instagram.",
   ],
 };
 
@@ -37,6 +37,7 @@ const scheduleCopy: Record<
     heading: string;
     body: string;
     cadence: string;
+    date: string;
     location: string;
     principleLabel: string;
     guideLabel: string;
@@ -46,22 +47,24 @@ const scheduleCopy: Record<
   it: {
     label: "Programma",
     heading: "Un sabato diverso.",
-    body: "14:00 → 22:00. Vieni quando preferisci.",
+    body: "14:00 → 20:00. Un pomeriggio per costruire, muoversi e ripartire piu lucidi.",
     cadence: "Prossimo incontro",
+    date: "Sabato 26",
     location: "Molina di Fiemme · Via Bolzano 20",
     principleLabel: "Come funziona",
     guideLabel: "Instagram",
-    guideBody: "Per controllare il prossimo incontro o chiederci qualcosa, scrivici su @saba_to_build.",
+    guideBody: "Per dettagli e conferme, scrivici su @saba_to_build.",
   },
   en: {
     label: "Schedule",
     heading: "A different Saturday.",
-    body: "14:00 → 22:00. Come whenever you prefer.",
+    body: "14:00 → 20:00. An afternoon to build, move, and leave with more clarity.",
     cadence: "Next meetup",
+    date: "Saturday 26th",
     location: "Molina di Fiemme · Via Bolzano 20",
     principleLabel: "How it works",
     guideLabel: "Instagram",
-    guideBody: "To check the next meetup or ask anything, DM @saba_to_build.",
+    guideBody: "For details and confirmations, message @saba_to_build.",
   },
 };
 
@@ -92,7 +95,8 @@ export default function ScheduleSection({ locale }: { locale: Locale }) {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <p className="text-sm uppercase tracking-[0.35em] text-slate-400">{copy.cadence}</p>
-            <p className="mt-4 font-heading text-3xl">14:00 → 22:00</p>
+            <p className="mt-4 font-heading text-3xl">{copy.date}</p>
+            <p className="mt-2 text-xl text-white">14:00 → 20:00</p>
             <p className="mt-2 text-slate-400">{copy.location}</p>
           </motion.div>
 

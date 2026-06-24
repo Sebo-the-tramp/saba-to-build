@@ -17,7 +17,7 @@ const footerCopy: Record<
     introBody: "Per chi non smette di inseguire l'impossibile. Ci vediamo ogni due settimane.",
     coordLabel: "Coordinate",
     coordBody: "Via Bolzano 20 · 38030 Molina di Fiemme",
-    coordTime: "sabato 14:00 → 22:00 · ogni due settimane",
+    coordTime: "sabato 14:00 → 20:00 · ogni due settimane",
     rights: "Tutti i diritti riservati · costruiamo con cura.",
   },
   en: {
@@ -25,7 +25,7 @@ const footerCopy: Record<
     introBody: "For anyone chasing the impossible. See you every other Saturday.",
     coordLabel: "Coordinates",
     coordBody: "Via Bolzano 20 · 38030 Molina di Fiemme",
-    coordTime: "Saturday 14:00 → 22:00 · every other week",
+    coordTime: "Saturday 14:00 → 20:00 · every other week",
     rights: "All rights reserved · we build with care.",
   },
 };

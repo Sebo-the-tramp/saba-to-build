@@ -5,17 +5,17 @@ import { Badge } from "@/components/ui/badge";
 import { mediaAssets } from "@/lib/assets";
 
 const eventsData = {
-  "restart-2026-06-13": {
-    date: "13 Giugno 2026",
+  "restart-saturday-26": {
+    date: "Sabato 26",
     title: "Restart 2026",
-    description: "Ripartiamo quest'anno: persone, idee, sport.",
-    longDescription: `Un sabato diverso, dalle 14:00 alle 22:00.
-Vieni quando preferisci. Verso le 18 beviamo qualcosa. Non serve invito, non serve prenotare: passa e basta.`,
-    tags: ["restart", "incontro", "sport"],
+    description: "Ripartiamo quest'anno: persone, idee, movimento.",
+    longDescription: `Un sabato diverso, dalle 14:00 alle 20:00.
+Arriva con un'idea, un progetto o una domanda. Verso le 18 rallentiamo: qualcosa da bere, storie brevi, decisioni piu chiare.`,
+    tags: ["restart", "incontro", "movimento"],
     imageUrl: mediaAssets.community,
     registrationFormUrl: "",
     location: "Via Bolzano 20 · Molina di Fiemme",
-    time: "14:00 → 22:00",
+    time: "14:00 → 20:00",
   },
   "kick-off-2025-06-07": {
     date: "7 Giugno 2025",

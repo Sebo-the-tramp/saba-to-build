@@ -17,10 +17,10 @@ type Launch = {
 const launches: Record<Locale, Launch[]> = {
   it: [
     {
-      id: "restart-2026-06-13",
-      date: "13 Giugno 2026",
+      id: "restart-saturday-26",
+      date: "Sabato 26",
       title: "Restart 2026",
-      description: "Ripartiamo quest'anno: persone, idee, sport. Dalle 14 alle 22, vieni quando preferisci.",
+      description: "Ripartiamo quest'anno: persone, idee, movimento. Dalle 14 alle 20, con qualcosa da costruire.",
       tags: ["restart", "incontro"],
       imageUrl: mediaAssets.community,
     },
@@ -51,10 +51,10 @@ const launches: Record<Locale, Launch[]> = {
   ],
   en: [
     {
-      id: "restart-2026-06-13",
-      date: "13 June 2026",
+      id: "restart-saturday-26",
+      date: "Saturday 26th",
       title: "Restart 2026",
-      description: "We restart this year: people, ideas, sport. From 14:00 to 22:00, come when you prefer.",
+      description: "We restart this year: people, ideas, movement. From 14:00 to 20:00, with something to build.",
       tags: ["restart", "meetup"],
       imageUrl: mediaAssets.community,
     },
@@ -98,16 +98,16 @@ const launchesCopy: Record<
 > = {
   it: {
     label: "Incontri",
-    heading: "Si riparte il 13 giugno.",
-    body: "Persone, idee, sport. Vieni quando preferisci.",
+    heading: "Si riparte sabato 26.",
+    body: "Persone, idee, movimento. Un sabato per costruire qualcosa che resta.",
     archiveLabel: "Archivio",
     archiveBody: "Il log degli incontri passati.",
     archiveCta: "Vedi l'archivio",
   },
   en: {
     label: "Meetups",
-    heading: "We restart on 13 June.",
-    body: "People, ideas, sport. Come when you prefer.",
+    heading: "We restart Saturday 26th.",
+    body: "People, ideas, movement. A Saturday to build something that lasts.",
     archiveLabel: "Archive",
     archiveBody: "The log of past meetups.",
     archiveCta: "Open the archive",

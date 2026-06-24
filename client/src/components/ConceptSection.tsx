@@ -11,8 +11,8 @@ const manifesto: Record<
 > = {
   it: [
     {
-      title: "Build senza permessi",
-      description: "La casa diventa laboratorio. Spazi mobili, prototipi rapidi.",
+      title: "Costruire senza chiedere permesso",
+      description: "La casa diventa laboratorio. Spazi mobili, prototipi vivi.",
       accent: "Itera",
     },
     {
@@ -21,15 +21,15 @@ const manifesto: Record<
       accent: "Condividi",
     },
     {
-      title: "Energia totale",
-      description: "Tecnologia, sport, cibo. Corpo e mente allineati.",
-      accent: "Stai sveglio",
+      title: "Energia intelligente",
+      description: "Tecnologia, movimento, cibo. Corpo e mente allineati.",
+      accent: "Accendi",
     },
   ],
   en: [
     {
-      title: "Build without permissions",
-      description: "Home becomes lab. Mobile setups, rapid prototypes.",
+      title: "Build without asking permission",
+      description: "Home becomes lab. Mobile setups, living prototypes.",
       accent: "Iterate",
     },
     {
@@ -38,9 +38,9 @@ const manifesto: Record<
       accent: "Share",
     },
     {
-      title: "Tribal energy",
-      description: "Tech, sport, food. Body and mind synced.",
-      accent: "Stay awake",
+      title: "Intelligent energy",
+      description: "Tech, movement, food. Body and mind aligned.",
+      accent: "Switch on",
     },
   ],
 };
@@ -57,17 +57,17 @@ const conceptCopy: Record<
 > = {
   it: {
     label: "Manifesto",
-    heading: "Costruiamo per chi fa, non per chi guarda.",
-    body: "Ogni sabato cambia. Nessun builder resta solo. Le idee devono muoversi.",
+    heading: "Uno spazio per chi trasforma le idee in realta.",
+    body: "Ogni sabato ha una forma diversa. Le idee incontrano persone, strumenti e movimento.",
     promiseLabel: "Promessa",
-    promiseText: "Builder, sognatori, believer. Porta ciò che sai, prendi ciò che serve, lascia un impatto.",
+    promiseText: "Porta quello che sai. Prendi slancio. Lascia qualcosa che resta.",
   },
   en: {
     label: "Manifesto",
-    heading: "We build for doers, not spectators.",
-    body: "Every Saturday shifts. No builder stays solo. Ideas must move.",
+    heading: "A place for people who turn ideas into reality.",
+    body: "Every Saturday has a different shape. Ideas meet people, tools, and motion.",
     promiseLabel: "Promise",
-    promiseText: "Builders, dreamers, believers. Bring what you know, take what you need, leave a dent.",
+    promiseText: "Bring what you know. Find momentum. Leave something that lasts.",
   },
 };
 
