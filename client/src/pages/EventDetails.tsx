@@ -5,12 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { mediaAssets } from "@/lib/assets";
 
 const eventsData = {
-  "restart-saturday-26": {
-    date: "Sabato 26",
+  "restart-saturday-27": {
+    date: "Sabato 27",
     title: "Restart 2026",
     description: "Ripartiamo quest'anno: persone, idee, movimento.",
     longDescription: `Un sabato diverso, dalle 14:00 alle 20:00.
-Arriva con un'idea, un progetto o una domanda. Verso le 18 rallentiamo: qualcosa da bere, storie brevi, decisioni piu chiare.`,
+Ci si trova, si scambiano idee e si costruisce qualcosa insieme. Verso le 18 rallentiamo: qualcosa da bere e storie brevi.`,
     tags: ["restart", "incontro", "movimento"],
     imageUrl: mediaAssets.community,
     registrationFormUrl: "",

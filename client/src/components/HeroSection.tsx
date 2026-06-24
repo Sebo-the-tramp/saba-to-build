@@ -26,8 +26,8 @@ const heroCopy: Record<
     subtitle: "Persone. Idee. Movimento.",
     primaryCta: "Programma",
     secondaryCta: "DM Instagram",
-    meta: "Sabato 26 · 14:00 → 20:00",
-    note: "Arriva con un'idea, esci con qualcosa che si muove. Dalle 18 il ritmo diventa piu leggero.",
+    meta: "Sabato 27 · 14:00 → 20:00",
+    note: "Ci si trova, si scambiano idee e si costruisce qualcosa insieme.",
   },
   en: {
     season: "Next meetup",
@@ -37,8 +37,8 @@ const heroCopy: Record<
     subtitle: "People. Ideas. Movement.",
     primaryCta: "Schedule",
     secondaryCta: "DM Instagram",
-    meta: "Saturday 26th · 14:00 → 20:00",
-    note: "Arrive with an idea, leave with something in motion. From 18:00, the rhythm gets lighter.",
+    meta: "Saturday 27th · 14:00 → 20:00",
+    note: "We meet, exchange ideas, and build something together.",
   },
 };
 

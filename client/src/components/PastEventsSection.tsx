@@ -17,8 +17,8 @@ type Launch = {
 const launches: Record<Locale, Launch[]> = {
   it: [
     {
-      id: "restart-saturday-26",
-      date: "Sabato 26",
+      id: "restart-saturday-27",
+      date: "Sabato 27",
       title: "Restart 2026",
       description: "Ripartiamo quest'anno: persone, idee, movimento. Dalle 14 alle 20, con qualcosa da costruire.",
       tags: ["restart", "incontro"],
@@ -51,8 +51,8 @@ const launches: Record<Locale, Launch[]> = {
   ],
   en: [
     {
-      id: "restart-saturday-26",
-      date: "Saturday 26th",
+      id: "restart-saturday-27",
+      date: "Saturday 27th",
       title: "Restart 2026",
       description: "We restart this year: people, ideas, movement. From 14:00 to 20:00, with something to build.",
       tags: ["restart", "meetup"],
@@ -98,7 +98,7 @@ const launchesCopy: Record<
 > = {
   it: {
     label: "Incontri",
-    heading: "Si riparte sabato 26.",
+    heading: "Si riparte sabato 27.",
     body: "Persone, idee, movimento. Un sabato per costruire qualcosa che resta.",
     archiveLabel: "Archivio",
     archiveBody: "Il log degli incontri passati.",
@@ -106,7 +106,7 @@ const launchesCopy: Record<
   },
   en: {
     label: "Meetups",
-    heading: "We restart Saturday 26th.",
+    heading: "We restart Saturday 27th.",
     body: "People, ideas, movement. A Saturday to build something that lasts.",
     archiveLabel: "Archive",
     archiveBody: "The log of past meetups.",
